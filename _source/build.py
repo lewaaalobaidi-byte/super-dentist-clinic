@@ -43,22 +43,22 @@ def nav(active):
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
       <span class="text-[15px] sm:text-lg md:text-xl font-extrabold text-navyBlue tracking-tight leading-tight text-glow">{t("عيادة سوبر دينتست", "Super Dentist", "کلینیکی سوپەر دێنتست")}</span>
     </a>
-    <div class="hidden xl:flex items-center gap-5 font-bold text-navyBlue text-[15px]">{desk}</div>
+    <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
       <div class="flex bg-white/60 rounded-full p-1 border border-white/60 shadow-sm" role="group" aria-label="Language">
         <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">AR</button>
         <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">EN</button>
         <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">KU</button>
       </div>
-      <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="xl:hidden p-1.5 text-navyBlue">
+      <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-1.5 text-navyBlue">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link hidden xl:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
-        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>{t("احجز عبر واتساب", "Book via WhatsApp", "نۆرە بگرە لە واتسئاپ")}
+      <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
+        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="hidden xl:inline">{t("احجز عبر واتساب", "Book via WhatsApp", "نۆرە بگرە لە واتسئاپ")}</span>
       </a>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden xl:hidden absolute top-full left-0 w-full shadow-lg py-4 px-6 flex flex-col gap-2 text-center font-bold text-navyBlue rounded-b-2xl bg-white/95">
+  <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full shadow-lg py-4 px-6 flex flex-col gap-2 text-center font-bold text-navyBlue rounded-b-2xl bg-white/95">
     {mob}
     <div class="flex justify-center gap-6 mt-2">
       <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link py-2 text-whatsapp flex items-center gap-2"><i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>{t("واتساب", "WhatsApp", "واتسئاپ")}</a>
@@ -134,7 +134,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 {head_extra}
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -145,7 +145,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 </main>
 {FOOTER}
 {scripts}
-<script src="site.js?v=4"></script>
+<script src="site.js?v=5"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>

@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-gradient-to-b from-sky-50 via-white to-sky-50">
@@ -30,7 +30,7 @@
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
       <span class="text-[15px] sm:text-lg md:text-xl font-extrabold text-navyBlue tracking-tight leading-tight text-glow"><span class="lang-text lang-ar">عيادة سوبر دينتست</span><span class="lang-text lang-en">Super Dentist</span><span class="lang-text lang-ku">کلینیکی سوپەر دێنتست</span></span>
     </a>
-    <div class="hidden xl:flex items-center gap-5 font-bold text-navyBlue text-[15px]"><a href="index.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">الرئيسية</span><span class="lang-text lang-en">Home</span><span class="lang-text lang-ku">سەرەکی</span></a>
+    <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]"><a href="index.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">الرئيسية</span><span class="lang-text lang-en">Home</span><span class="lang-text lang-ku">سەرەکی</span></a>
 <a href="index.html#services" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">الخدمات</span><span class="lang-text lang-en">Services</span><span class="lang-text lang-ku">خزمەتگوزارییەکان</span></a>
 <a href="doctors.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">أطباؤنا</span><span class="lang-text lang-en">Doctors</span><span class="lang-text lang-ku">پزیشکەکانمان</span></a>
 <a href="gallery.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">قبل وبعد</span><span class="lang-text lang-en">Before & After</span><span class="lang-text lang-ku">پێش و دوای</span></a>
@@ -43,15 +43,15 @@
         <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">EN</button>
         <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">KU</button>
       </div>
-      <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="xl:hidden p-1.5 text-navyBlue">
+      <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-1.5 text-navyBlue">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" class="wa-link hidden xl:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
-        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book via WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span>
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
+        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="hidden xl:inline"><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book via WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span></span>
       </a>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden xl:hidden absolute top-full left-0 w-full shadow-lg py-4 px-6 flex flex-col gap-2 text-center font-bold text-navyBlue rounded-b-2xl bg-white/95">
+  <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full shadow-lg py-4 px-6 flex flex-col gap-2 text-center font-bold text-navyBlue rounded-b-2xl bg-white/95">
     <a href="index.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">الرئيسية</span><span class="lang-text lang-en">Home</span><span class="lang-text lang-ku">سەرەکی</span></a>
 <a href="index.html#services" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">الخدمات</span><span class="lang-text lang-en">Services</span><span class="lang-text lang-ku">خزمەتگوزارییەکان</span></a>
 <a href="doctors.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">أطباؤنا</span><span class="lang-text lang-en">Doctors</span><span class="lang-text lang-ku">پزیشکەکانمان</span></a>
@@ -149,7 +149,7 @@ window.TOUR = [
   { src: 'tour/equipment.jpg',     caption: { ar: 'أحدث التجهيزات',   en: 'Modern equipment',   ku: 'نوێترین ئامێرەکان' } }
 ];
 </script>
-<script src="site.js?v=4"></script>
+<script src="site.js?v=5"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
