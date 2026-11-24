@@ -37,7 +37,7 @@ def nav(active):
     mob = "\n".join(
         f'<a href="{h}" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue">{t(*l)}</a>' for h, l in NAV)
     return f'''
-<nav class="fixed w-full z-50 glass-panel bg-white/60 border-b-0">
+<nav class="fixed w-full z-50 site-header">
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center relative gap-2 md:gap-4">
     <a href="index.html" class="flex items-center gap-2 md:gap-3 min-w-0">
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
@@ -46,14 +46,14 @@ def nav(active):
     <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
       <div class="flex bg-white/60 rounded-full p-1 border border-white/60 shadow-sm" role="group" aria-label="Language">
-        <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">AR</button>
-        <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">EN</button>
-        <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">KU</button>
+        <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">AR</button>
+        <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">EN</button>
+        <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">KU</button>
       </div>
       <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-1.5 text-navyBlue">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
+      <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta">
         <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="hidden xl:inline">{t("احجز عبر واتساب", "Book via WhatsApp", "نۆرە بگرە لە واتسئاپ")}</span>
       </a>
     </div>
@@ -134,7 +134,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 {head_extra}
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -145,7 +145,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 </main>
 {FOOTER}
 {scripts}
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -158,7 +158,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 def wa_btn(text_ar, text_en, text_ku, label, cls="px-8 py-3 text-base"):
     return (f'<a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" '
             f'data-wa-ar="{text_ar}" data-wa-en="{text_en}" data-wa-ku="{text_ku}" '
-            f'class="wa-link inline-flex items-center justify-center gap-2 {cls} font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">'
+            f'class="wa-link inline-flex items-center justify-center gap-2 {cls} font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta">'
             f'<i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>{label}</a>')
 
 
@@ -179,7 +179,7 @@ def build_home():
     doctors = ""
     for d in DOCTORS:
         doctors += f'''
-<a href="doctors.html#{d["id"]}" class="specialist-card relative rounded-[1.5rem] md:rounded-[2rem] overflow-hidden glass-panel group/item flex flex-col justify-end p-6 md:p-8">
+<a href="doctors.html#{d["id"]}" class="specialist-card relative isolate rounded-[20px] overflow-hidden bg-slate-200 border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
   <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
   <img src="{d["photo"]}" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="{d["name"]["en"]}">
   <div class="relative z-10 transform md:translate-y-10 md:group-hover/item:translate-y-0 transition-transform duration-500 bg-white/85 p-3 md:p-4 rounded-xl md:rounded-2xl">
@@ -250,15 +250,15 @@ window.REVIEWS = [
   </div>
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 pt-24">
-    <div class="space-y-4 md:space-y-6 max-w-2xl bg-white/30 p-6 md:p-8 rounded-3xl backdrop-blur-md border border-white/40 shadow-glass">
+    <div class="space-y-4 md:space-y-6 max-w-2xl hero-panel p-6 md:p-10 rounded-[20px]">
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navyBlue leading-[1.2] text-glow">
         {t("ابتسامتك،", "Your Smile,", "خەندەکەت،", block=True)}
         <span class="text-deepBlue">{t("شغفنا.", "Our Passion.", "خولیای ئێمەیە.")}</span>
       </h1>
       <p class="text-lg md:text-xl text-navyBlue font-bold subtext-glow leading-relaxed">{t("نجمع بين أمهر الأطباء وأحدث التقنيات لنمنحك الرعاية التي تستحقها.", "Combining top specialists and the latest technology to give you the care you deserve.", "باشترین پزیشکەکان و نوێترین تەکنەلۆژیا کۆدەکەینەوە بۆ پێدانی ئەو چاودێرییەی شایستەیت.")}</p>
       <div class="pt-4 flex flex-wrap gap-3">
-        <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link inline-flex items-center gap-2 px-8 py-3 font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark shadow-lg hover:shadow-glow"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>{t("احجز موعدك", "Book an Appointment", "نۆرە بگرە")}</a>
-        <a href="tel:+{WA1}" dir="ltr" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-navyBlue bg-white/80 rounded-full hover:bg-white shadow-lg"><i class="fa-solid fa-phone" aria-hidden="true"></i>{t("اتصل بنا", "Call Us", "پەیوەندیمان پێوە بکە")}</a>
+        <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link inline-flex items-center gap-2 px-8 py-3 font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>{t("احجز موعدك", "Book an Appointment", "نۆرە بگرە")}</a>
+        <a href="tel:+{WA1}" dir="ltr" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-phone" aria-hidden="true"></i>{t("اتصل بنا", "Call Us", "پەیوەندیمان پێوە بکە")}</a>
       </div>
     </div>
   </div>
@@ -267,10 +267,10 @@ window.REVIEWS = [
 <!-- Stats. TODO: confirm these numbers with the clinic -->
 <section id="stats" class="pt-8 pb-16 md:pt-12 md:pb-24 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-    <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5000<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("علاج ناجح", "Successful Treatments", "چارەسەری سەرکەوتوو")}</span></div>
-    <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">4782<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("مريض سعيد", "Happy Patients", "نەخۆشی دڵخۆش")}</span></div>
-    <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5.0 <span class="text-yellow-500 text-2xl md:text-3xl">★</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("تقييم جوجل", "Google Rating", "هەڵسەنگاندنی گوگڵ")}</span></div>
-    <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">35<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("سنوات الخبرة", "Years of Experience", "ساڵانی ئەزموون")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5000<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("علاج ناجح", "Successful Treatments", "چارەسەری سەرکەوتوو")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">4782<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("مريض سعيد", "Happy Patients", "نەخۆشی دڵخۆش")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5.0 <span class="text-yellow-500 text-2xl md:text-3xl">★</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("تقييم جوجل", "Google Rating", "هەڵسەنگاندنی گوگڵ")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">35<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("سنوات الخبرة", "Years of Experience", "ساڵانی ئەزموون")}</span></div>
   </div>
 </section>
 
@@ -321,7 +321,7 @@ window.REVIEWS = [
           </div>
         </div>
         <!-- TODO: your write-a-review link: https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID -->
-        <a id="g-write" href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-white bg-[#1a73e8] rounded-full hover:bg-[#1558b0] text-sm"><i class="fa-solid fa-pen" aria-hidden="true"></i>{t("اكتب تقييمك", "Write a review", "هەڵسەنگاندن بنووسە")}</a>
+        <a id="g-write" href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-white bg-[#1a73e8] rounded-[14px] hover:bg-[#1558b0] text-sm"><i class="fa-solid fa-pen" aria-hidden="true"></i>{t("اكتب تقييمك", "Write a review", "هەڵسەنگاندن بنووسە")}</a>
       </div>
     </div>
 
@@ -341,7 +341,7 @@ window.REVIEWS = [
 
     <div id="reviews-empty" class="card rounded-3xl p-8 text-center space-y-4">
       <p class="text-navyBlue font-bold text-lg">{t("اقرأ تجارب مرضانا الحقيقية على جوجل.", "Read real experiences from our patients on Google.", "ئەزموونی ڕاستەقینەی نەخۆشەکانمان لە گوگڵ بخوێنەوە.")}</p>
-      <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-white bg-navyBlue rounded-full hover:bg-deepBlue">{t("عرض جميع المراجعات", "See all reviews", "هەموو پێداچوونەوەکان ببینە")}</a>
+      <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-white bg-navyBlue rounded-[14px] hover:bg-[#0A192F] transition-colors">{t("عرض جميع المراجعات", "See all reviews", "هەموو پێداچوونەوەکان ببینە")}</a>
     </div>
   </div>
 </section>
@@ -373,7 +373,7 @@ def build_services():
 
         gallery_link = ""
         if s["gallery"]:
-            gallery_link = f'<a href="gallery.html#{s["gallery"]}" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-navyBlue bg-white rounded-full hover:bg-sky-50 shadow"><i class="fa-solid fa-images" aria-hidden="true"></i>{t("شاهد نتائج قبل وبعد", "See before &amp; after results", "ئەنجامی پێش و دوای ببینە")}</a>'
+            gallery_link = f'<a href="gallery.html#{s["gallery"]}" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-images" aria-hidden="true"></i>{t("شاهد نتائج قبل وبعد", "See before &amp; after results", "ئەنجامی پێش و دوای ببینە")}</a>'
 
         others = "".join(
             f'<a href="{o["slug"]}.html" class="card rounded-2xl px-4 py-3 font-bold text-navyBlue hover:text-deepBlue text-center">{tt(o["title"])}</a>'
@@ -431,7 +431,7 @@ def build_doctors():
         links = "".join(
             f'<a href="{sl}.html" class="px-4 py-2 rounded-full bg-sky-50 text-navyBlue font-bold text-sm hover:bg-sky-100">{tt(SVC[sl]["title"])}</a>'
             for sl in d["services"])
-        gal = (f'<a href="gallery.html#{d["gallery"]}" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-navyBlue bg-white rounded-full border border-navyBlue/15 hover:bg-sky-50"><i class="fa-solid fa-images" aria-hidden="true"></i>{t("شاهد الحالات", "See cases", "حاڵەتەکان ببینە")}</a>'
+        gal = (f'<a href="gallery.html#{d["gallery"]}" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-images" aria-hidden="true"></i>{t("شاهد الحالات", "See cases", "حاڵەتەکان ببینە")}</a>'
                if d["gallery"] else "")
         n = d["name"]
         cards += f'''

@@ -11,23 +11,43 @@ section, footer, [id] { scroll-margin-top: 90px; }
   .bg-video { display: none; }
 }
 
+/* Cards on the light background: solid, no blur */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  background: #fff !important;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.glass-panel:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+a.glass-panel:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 2px 4px rgba(15,23,42,.05), 0 16px 32px rgba(15,23,42,.10);
+}
+
+/* Frosted glass only where it floats over the video: strong blur, nearly solid fill */
+.site-header {
+  background: rgba(255,255,255,.80);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(15,23,42,.08);
+}
+.hero-panel {
+  background: rgba(255,255,255,.84);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+          backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: 0 1px 2px rgba(15,23,42,.06), 0 20px 48px rgba(15,23,42,.14);
+}
+.stat-tile {
+  background: rgba(255,255,255,.90);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+          backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.95);
+  box-shadow: 0 8px 24px rgba(15,23,42,.08);
 }
 .card { background: #fff; border: 1px solid rgba(26,54,93,.08); box-shadow: 0 6px 24px rgba(26,54,93,.06); }
 
-.text-glow { color: #1a365d; text-shadow: 0 0 15px #fff, 0 0 30px rgba(255,255,255,.8), 0 0 5px #fff; }
-.subtext-glow { color: #1a365d; text-shadow: 0 0 10px rgba(255,255,255,.9), 0 0 3px #fff; }
+.text-glow { color: #1a365d; }
+.subtext-glow { color: #1a365d; }
 
 .specialist-card { flex: 1; transition: all .7s cubic-bezier(.25,.8,.25,1); min-height: 300px; }
 @media (min-width: 768px) {
@@ -80,3 +100,13 @@ a:hover .logo-metal::after { animation-duration: 1.6s; }
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Heading line heights: Arabic and Kurdish need more room */
+h1 { line-height: 1.15 !important; }
+h2 { line-height: 1.2 !important; }
+html[lang="ar"] h1, html[lang="ku"] h1 { line-height: 1.35 !important; }
+html[lang="ar"] h2, html[lang="ku"] h2 { line-height: 1.4 !important; }
+html[lang="en"] h1, html[lang="en"] h2 { letter-spacing: -0.02em; }
+
+/* Visible keyboard focus */
+a:focus-visible, button:focus-visible { outline: 3px solid #0062D6; outline-offset: 3px; }

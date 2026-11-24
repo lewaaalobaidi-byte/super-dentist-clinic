@@ -18,13 +18,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-gradient-to-b from-sky-50 via-white to-sky-50">
 
 
-<nav class="fixed w-full z-50 glass-panel bg-white/60 border-b-0">
+<nav class="fixed w-full z-50 site-header">
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center relative gap-2 md:gap-4">
     <a href="index.html" class="flex items-center gap-2 md:gap-3 min-w-0">
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
@@ -39,14 +39,14 @@
 <a href="#contact" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">تواصل معنا</span><span class="lang-text lang-en">Contact</span><span class="lang-text lang-ku">پەیوەندی</span></a></div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
       <div class="flex bg-white/60 rounded-full p-1 border border-white/60 shadow-sm" role="group" aria-label="Language">
-        <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">AR</button>
-        <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">EN</button>
-        <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">KU</button>
+        <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">AR</button>
+        <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">EN</button>
+        <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">KU</button>
       </div>
       <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-1.5 text-navyBlue">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp" class="wa-link hidden lg:inline-flex items-center gap-2 p-2.5 xl:px-5 xl:py-2.5 text-sm font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta">
         <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="hidden xl:inline"><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book via WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span></span>
       </a>
     </div>
@@ -95,8 +95,8 @@
     -->
     <div class="flex flex-wrap gap-2"><a href="orthodontics.html" class="px-4 py-2 rounded-full bg-sky-50 text-navyBlue font-bold text-sm hover:bg-sky-100"><span class="lang-text lang-ar">تقويم الأسنان</span><span class="lang-text lang-en">Orthodontics</span><span class="lang-text lang-ku">ڕاستکردنەوەی ددان</span></a></div>
     <div class="flex flex-wrap gap-3 pt-2">
-      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع بروفيسور حسين العبيدي" data-wa-en="Hello, I'd like to book an appointment with Prof. Hussain Al Obaidi" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای پڕۆفیسۆر حوسێن ئەلعوبێدی" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
-      <a href="gallery.html#orthodontics" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-navyBlue bg-white rounded-full border border-navyBlue/15 hover:bg-sky-50"><i class="fa-solid fa-images" aria-hidden="true"></i><span class="lang-text lang-ar">شاهد الحالات</span><span class="lang-text lang-en">See cases</span><span class="lang-text lang-ku">حاڵەتەکان ببینە</span></a>
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع بروفيسور حسين العبيدي" data-wa-en="Hello, I'd like to book an appointment with Prof. Hussain Al Obaidi" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای پڕۆفیسۆر حوسێن ئەلعوبێدی" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
+      <a href="gallery.html#orthodontics" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-images" aria-hidden="true"></i><span class="lang-text lang-ar">شاهد الحالات</span><span class="lang-text lang-en">See cases</span><span class="lang-text lang-ku">حاڵەتەکان ببینە</span></a>
     </div>
   </div>
 </article>
@@ -121,7 +121,7 @@
     -->
     
     <div class="flex flex-wrap gap-3 pt-2">
-      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع دكتور محمد العبيدي" data-wa-en="Hello, I'd like to book an appointment with Dr. Mohamed Al Obaidi" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای دکتۆر محەمەد ئەلعوبێدی" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع دكتور محمد العبيدي" data-wa-en="Hello, I'd like to book an appointment with Dr. Mohamed Al Obaidi" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای دکتۆر محەمەد ئەلعوبێدی" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
       
     </div>
   </div>
@@ -147,8 +147,8 @@
     -->
     <div class="flex flex-wrap gap-2"><a href="cosmetic-dentistry.html" class="px-4 py-2 rounded-full bg-sky-50 text-navyBlue font-bold text-sm hover:bg-sky-100"><span class="lang-text lang-ar">تجميل الأسنان</span><span class="lang-text lang-en">Cosmetic Dentistry</span><span class="lang-text lang-ku">جوانکاری ددان</span></a></div>
     <div class="flex flex-wrap gap-3 pt-2">
-      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع دكتورة ساوين خوشناو" data-wa-en="Hello, I'd like to book an appointment with Dr. Sawin Khoshnaw" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای دکتۆرە ساوین خۆشناو" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
-      <a href="gallery.html#cosmetic" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-navyBlue bg-white rounded-full border border-navyBlue/15 hover:bg-sky-50"><i class="fa-solid fa-images" aria-hidden="true"></i><span class="lang-text lang-ar">شاهد الحالات</span><span class="lang-text lang-en">See cases</span><span class="lang-text lang-ku">حاڵەتەکان ببینە</span></a>
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود حجز موعد مع دكتورة ساوين خوشناو" data-wa-en="Hello, I'd like to book an appointment with Dr. Sawin Khoshnaw" data-wa-ku="سڵاو، دەمەوێت نۆرەیەک بگرم لای دکتۆرە ساوین خۆشناو" class="wa-link inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز مع الطبيب</span><span class="lang-text lang-en">Book with this doctor</span><span class="lang-text lang-ku">نۆرە بگرە لای ئەم پزیشکە</span></a>
+      <a href="gallery.html#cosmetic" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-images" aria-hidden="true"></i><span class="lang-text lang-ar">شاهد الحالات</span><span class="lang-text lang-en">See cases</span><span class="lang-text lang-ku">حاڵەتەکان ببینە</span></a>
     </div>
   </div>
 </article></div></section>
@@ -189,7 +189,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
