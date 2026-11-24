@@ -445,8 +445,9 @@
       var src = box.getAttribute('data-photo');
       probe(src).then(function (ok) {
         if (!ok) return;
-        var img = document.createElement('img'); img.src = src; img.alt = ''; img.loading = 'lazy';
-        box.insertBefore(img, box.firstChild); box.classList.add('has-photo');
+        var img = box.querySelector('img');
+        if (!img) { img = document.createElement('img'); img.alt = ''; box.insertBefore(img, box.firstChild); }
+        img.src = src; box.classList.add('has-photo');
       });
     });
   }
