@@ -263,6 +263,7 @@ window.REVIEWS = [
 <div class="relative overflow-hidden">
   <div class="absolute inset-0 z-0 pointer-events-none bg-slate-200" aria-hidden="true">
     <video id="bg-video" autoplay loop muted playsinline preload="metadata" poster="clinic-bg-poster.jpg" class="bg-video w-full h-full object-cover">
+      <source src="clinic-doctors-bg-hq.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="clinic-doctors-bg.mp4" type="video/mp4">
     </video>
     <div class="absolute inset-0 hero-overlay"></div>
