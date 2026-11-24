@@ -121,7 +121,7 @@
     var nm = document.createElement(r.url ? 'a' : 'div');
     if (r.url) { nm.href = r.url; nm.target = '_blank'; nm.rel = 'noopener'; }
     nm.className = 'block font-bold text-navyBlue truncate hover:text-deepBlue text-left rtl:text-right'; nm.textContent = r.name; nm.style.unicodeBidi = 'plaintext';
-    var dt = document.createElement('div'); dt.className = 'text-xs font-semibold text-navyBlue/55 text-left rtl:text-right';
+    var dt = document.createElement('div'); dt.className = 'text-xs font-semibold text-slate-500 text-left rtl:text-right';
     if (r.month) { dt.setAttribute('data-month', r.month); dt.textContent = monthLabel(r.month, current); } else dt.textContent = r.date || '';
     who.appendChild(nm); who.appendChild(dt);
     var g = document.createElement('span');
@@ -133,7 +133,7 @@
     var n = Math.round(r.stars || 5); stars.innerHTML = '★★★★★'.slice(0, n) + '<span class="text-slate-200">' + '★★★★★'.slice(0, 5 - n) + '</span>';
 
     var txt = document.createElement('p');
-    txt.className = 'text-navyBlue/85 font-medium leading-relaxed line-clamp-5 whitespace-pre-line'; txt.setAttribute('dir', 'auto');
+    txt.className = 'text-slate-700 font-normal leading-relaxed line-clamp-5 whitespace-pre-line'; txt.setAttribute('dir', 'auto');
     txt.textContent = r.text || '';
     var more = document.createElement('button');
     more.type = 'button'; more.className = 'hidden self-start text-sm font-bold text-deepBlue hover:underline';
@@ -280,7 +280,7 @@
     fallback(after); fallback(before);
 
     var line = document.createElement('div'); line.className = 'ba-line';
-    var knob = document.createElement('div'); knob.className = 'ba-knob'; knob.textContent = '⇆';
+    var knob = document.createElement('div'); knob.className = 'ba-knob'; knob.innerHTML = '<i class="fa-solid fa-arrows-left-right" aria-hidden="true"></i>';
     line.appendChild(knob);
 
     var tagB = document.createElement('span'); tagB.className = 'ba-tag'; tagB.style.left = '10px';

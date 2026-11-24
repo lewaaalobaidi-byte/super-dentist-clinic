@@ -32,7 +32,7 @@ NAV = [
 
 def nav(active):
     desk = "\n".join(
-        f'<a href="{h}" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow{" text-deepBlue" if h == active else ""}">{t(*l)}</a>'
+        f'<a href="{h}" class="whitespace-nowrap hover:text-deepBlue transition-colors sub{" text-deepBlue" if h == active else ""}">{t(*l)}</a>'
         for h, l in NAV)
     mob = "\n".join(
         f'<a href="{h}" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue">{t(*l)}</a>' for h, l in NAV)
@@ -41,7 +41,7 @@ def nav(active):
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center relative gap-2 md:gap-4">
     <a href="index.html" class="flex items-center gap-2 md:gap-3 min-w-0">
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
-      <span class="text-[15px] sm:text-lg md:text-xl font-extrabold text-navyBlue tracking-tight leading-tight text-glow">{t("عيادة سوبر دينتست", "Super Dentist", "کلینیکی سوپەر دێنتست")}</span>
+      <span class="text-[15px] sm:text-lg md:text-xl font-bold text-navyBlue tracking-tight leading-tight ">{t("عيادة سوبر دينتست", "Super Dentist", "کلینیکی سوپەر دێنتست")}</span>
     </a>
     <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
@@ -78,35 +78,46 @@ MOBILE_CTA = f'''
 </div>'''
 
 FOOTER = f'''
-<footer id="contact" class="relative z-10 mt-8 md:mt-12 border-t border-white/60 bg-white/85 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center space-y-8">
-    <span class="logo-metal mx-auto block" style="width:96px;height:76px"><img src="super-dentist-logo.png" alt="" width="96" height="76" style="width:96px;height:76px;object-fit:contain" loading="lazy"></span>
-    <h2 class="text-2xl md:text-3xl font-extrabold text-navyBlue">{t("عيادة سوبر دينتست", "Super Dentist Clinic", "کلینیکی سوپەر دێنتست")}</h2>
-    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-16 text-base md:text-lg font-bold text-navyBlue/90">
-      <div class="flex flex-col items-center gap-2">
-        <i class="fa-solid fa-location-dot text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
-        <span>{t("أربيل - شارع 120م - لالاف سيتي فيو", "Erbil - 120m Street - Lalav City View", "هەولێر - شەقامی 120م - لالاف ستی ڤیو")}</span>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Super+Dentist+Clinic+Erbil" target="_blank" rel="noopener" class="text-sm text-deepBlue underline">{t("الاتجاهات", "Get directions", "ڕێنمایی ڕێگا")}</a>
+<footer id="contact" class="relative z-10 mt-8 bg-[#0A192F] text-slate-300">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 pt-14 pb-8">
+    <div class="grid gap-10 md:grid-cols-[1.3fr_1fr_1.3fr]">
+      <div class="space-y-4">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <span class="logo-metal" style="width:56px;height:44px"><img src="super-dentist-logo.png" alt="" width="56" height="44" style="width:56px;height:44px;object-fit:contain" loading="lazy"></span>
+          <span class="text-xl font-bold text-white">{t("عيادة سوبر دينتست", "Super Dentist Clinic", "کلینیکی سوپەر دێنتست")}</span>
+        </a>
+        <p class="text-slate-400 max-w-[36ch]">{t("رعاية أسنان متكاملة في أربيل، من التقويم والزراعة إلى تجميل الابتسامة.", "Complete dental care in Erbil, from orthodontics and implants to smile design.", "چاودێری تەواوی ددان لە هەولێر، لە ڕاستکردنەوە و چاندنەوە تا جوانکاری خەندە.")}</p>
       </div>
-      <!-- TODO opening hours: fill in, then remove the comment markers
-      <div class="flex flex-col items-center gap-2">
-        <i class="fa-regular fa-clock text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
-        <span>{t("السبت - الخميس: ...", "Sat - Thu: ...", "شەممە - پێنجشەممە: ...")}</span>
-      </div>
-      -->
-      <div class="flex flex-col items-center gap-3">
-        <i class="fa-solid fa-phone text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
+      <nav aria-label="Footer">
+        <h3 class="text-sm font-semibold text-white mb-4">{t("الصفحات", "Pages", "پەڕەکان")}</h3>
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-2.5 text-slate-300">
+          <li><a class="hover:text-white" href="index.html#services">{t("الخدمات", "Services", "خزمەتگوزارییەکان")}</a></li>
+          <li><a class="hover:text-white" href="doctors.html">{t("أطباؤنا", "Doctors", "پزیشکەکانمان")}</a></li>
+          <li><a class="hover:text-white" href="gallery.html">{t("قبل وبعد", "Before &amp; After", "پێش و دوای")}</a></li>
+          <li><a class="hover:text-white" href="tour.html">{t("جولة في العيادة", "Clinic Tour", "گەشتی کلینیک")}</a></li>
+          <li><a class="hover:text-white" href="index.html#reviews">{t("آراء المرضى", "Reviews", "بۆچوونەکان")}</a></li>
+          <li><a class="hover:text-white" href="hollywood-smile.html">{t("ابتسامة هوليود", "Hollywood Smile", "خەندەی هۆلیوود")}</a></li>
+        </ul>
+      </nav>
+      <div class="space-y-4">
+        <h3 class="text-sm font-semibold text-white">{t("تواصل معنا", "Contact", "پەیوەندی")}</h3>
+        <p class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-[#7DD3FC] mt-1" aria-hidden="true"></i><span>{t("أربيل - شارع 120م - لالاف سيتي فيو", "Erbil - 120m Street - Lalav City View", "هەولێر - شەقامی 120م - لالاف ستی ڤیو")}<br><a href="https://www.google.com/maps/dir/?api=1&destination=Super+Dentist+Clinic+Erbil" target="_blank" rel="noopener" class="text-[#7DD3FC] hover:underline text-sm">{t("الاتجاهات", "Get directions", "ڕێنمایی ڕێگا")}</a></span></p>
+        <!-- TODO opening hours: fill in, then remove the comment markers
+        <p class="flex items-start gap-3"><i class="fa-regular fa-clock text-[#7DD3FC] mt-1" aria-hidden="true"></i><span>{t("السبت - الخميس: ...", "Sat - Thu: ...", "شەممە - پێنجشەممە: ...")}</span></p>
+        -->
         <div class="flex items-center gap-3" dir="ltr">
-          <a href="tel:+{WA1}" dir="ltr" class="tracking-wide text-xl hover:text-deepBlue">+964 750 722 7500</a>
-          <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link"><i class="fa-brands fa-whatsapp text-whatsapp text-2xl" aria-hidden="true"></i></a>
+          <i class="fa-solid fa-phone text-[#7DD3FC]" aria-hidden="true"></i>
+          <a href="tel:+{WA1}" dir="ltr" class="tracking-wide text-white hover:underline">+964 750 722 7500</a>
+          <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link text-[#4ADE80] text-xl"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
         </div>
         <div class="flex items-center gap-3" dir="ltr">
-          <a href="tel:+{WA2}" dir="ltr" class="tracking-wide text-xl hover:text-deepBlue">+964 776 121 2111</a>
-          <a href="https://wa.me/{WA2}" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link"><i class="fa-brands fa-whatsapp text-whatsapp text-2xl" aria-hidden="true"></i></a>
+          <i class="fa-solid fa-phone text-[#7DD3FC]" aria-hidden="true"></i>
+          <a href="tel:+{WA2}" dir="ltr" class="tracking-wide text-white hover:underline">+964 776 121 2111</a>
+          <a href="https://wa.me/{WA2}" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link text-[#4ADE80] text-xl"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
-    <p class="pt-6 text-xs md:text-sm text-navyBlue/70 font-semibold border-t border-navyBlue/10 max-w-2xl mx-auto leading-relaxed">
+    <p class="mt-12 pt-6 border-t border-white/10 text-sm text-slate-400 text-center leading-relaxed">
       &copy; <span id="year" dir="ltr">2026</span>
       {t('جميع الحقوق محفوظة لشركة وي سكيور We Secure للتصميم والاعلان وتكنولوجيا المعلومات | <span dir="ltr">07703060331</span>',
          'All rights reserved to We Secure for Design, Advertising &amp; IT | <span dir="ltr">07703060331</span>',
@@ -140,10 +151,10 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <meta property="og:image" content="super-dentist-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -155,7 +166,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=10"></script>
+<script src="site.js?v=11"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -176,8 +187,8 @@ def page_header(title_html, sub_html=""):
     return f'''
 <section class="pt-32 pb-8 md:pt-36 md:pb-10">
   <div class="max-w-5xl mx-auto px-4 md:px-6 text-center space-y-4">
-    <h1 class="text-3xl md:text-5xl font-extrabold text-navyBlue">{title_html}</h1>
-    {f'<p class="text-lg md:text-xl text-navyBlue/80 font-semibold max-w-3xl mx-auto leading-relaxed">{sub_html}</p>' if sub_html else ''}
+    <h1 class="t-h1 font-bold text-navyBlue">{title_html}</h1>
+    {f'<p class="t-lead text-slate-600 max-w-[60ch] mx-auto">{sub_html}</p>' if sub_html else ''}
   </div>
 </section>'''
 
@@ -190,12 +201,12 @@ def build_home():
     for d in DOCTORS:
         doctors += f'''
 <a href="doctors.html#{d["id"]}" class="doctor-card relative isolate w-full max-w-[420px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] aspect-[3/4] rounded-[20px] overflow-hidden bg-slate-200 hover:-translate-y-0.5 transition-transform border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
-  <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 via-[#0A192F]/25 via-40% to-transparent z-0"></div>
   <img src="{d["photo"]}" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="{d["name"]["en"]}">
-  <div class="relative z-10 bg-white/90 p-4 rounded-2xl">
-    <h3 class="text-xl md:text-2xl font-black text-navyBlue mb-1">{tt(d["name"])}</h3>
-    <p class="text-deepBlue font-bold text-sm md:text-lg">{tt(d["role"])}</p>
-    <span class="text-sm font-bold text-navyBlue/70">{t("الملف الشخصي ←", "View profile →", "پرۆفایل ←")}</span>
+  <div class="relative z-10 p-1">
+    <h3 class="t-h3 font-semibold text-white mb-1">{tt(d["name"])}</h3>
+    <p class="text-[#7DD3FC] font-semibold text-sm md:text-base">{tt(d["role"])}</p>
+    <span class="inline-block mt-2 text-sm font-semibold text-white/85 underline underline-offset-4 decoration-white/40">{t("الملف الشخصي ←", "View profile →", "پرۆفایل ←")}</span>
   </div>
 </a>'''
 
@@ -204,7 +215,7 @@ def build_home():
         span = " lg:col-span-2" if i == len(SERVICES) - 1 else ""
         services += f'''
 <a href="{s["slug"]}.html" class="glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-center items-center text-center gap-2 bg-white/70 hover:bg-white/90{span}">
-  <h3 class="text-lg md:text-xl font-black text-navyBlue">{tt(s["title"])}</h3>
+  <h3 class="text-lg md:text-xl font-semibold text-navyBlue">{tt(s["title"])}</h3>
   <span class="text-sm font-bold text-deepBlue">{t("اعرف المزيد", "Learn more", "زیاتر بزانە")}</span>
 </a>'''
 
@@ -255,32 +266,32 @@ window.REVIEWS = [
     <video id="bg-video" autoplay loop muted playsinline preload="metadata" poster="clinic-bg-poster.jpg" class="bg-video w-full h-full object-cover">
       <source src="clinic-doctors-bg.mp4" type="video/mp4">
     </video>
-    <div class="absolute inset-0 bg-white/30"></div>
+    <div class="absolute inset-0 hero-overlay"></div>
     <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#f4f9fd]"></div>
   </div>
-<section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+<section id="home" class="relative min-h-[600px] md:min-h-[min(78svh,720px)] flex items-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 pt-24">
-    <div class="space-y-4 md:space-y-6 max-w-2xl hero-panel p-6 md:p-10 rounded-[20px]">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-navyBlue leading-[1.2] text-glow">
+    <div class="space-y-5 md:space-y-6 max-w-2xl py-10">
+      <h1 class="t-display font-bold text-white">
         {t("ابتسامتك،", "Your Smile,", "خەندەکەت،", block=True)}
-        <span class="text-deepBlue">{t("شغفنا.", "Our Passion.", "خولیای ئێمەیە.")}</span>
+        <span class="text-[#7DD3FC]">{t("شغفنا.", "Our Passion.", "خولیای ئێمەیە.")}</span>
       </h1>
-      <p class="text-lg md:text-xl text-navyBlue font-bold subtext-glow leading-relaxed">{t("نجمع بين أمهر الأطباء وأحدث التقنيات لنمنحك الرعاية التي تستحقها.", "Combining top specialists and the latest technology to give you the care you deserve.", "باشترین پزیشکەکان و نوێترین تەکنەلۆژیا کۆدەکەینەوە بۆ پێدانی ئەو چاودێرییەی شایستەیت.")}</p>
+      <p class="t-lead text-white/90 max-w-[60ch]">{t("نجمع بين أمهر الأطباء وأحدث التقنيات لنمنحك الرعاية التي تستحقها.", "Combining top specialists and the latest technology to give you the care you deserve.", "باشترین پزیشکەکان و نوێترین تەکنەلۆژیا کۆدەکەینەوە بۆ پێدانی ئەو چاودێرییەی شایستەیت.")}</p>
       <div class="pt-4 flex flex-wrap gap-3">
         <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link inline-flex items-center gap-2 px-8 py-3 font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>{t("احجز موعدك", "Book an Appointment", "نۆرە بگرە")}</a>
-        <a href="tel:+{WA1}" dir="ltr" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-phone" aria-hidden="true"></i>{t("اتصل بنا", "Call Us", "پەیوەندیمان پێوە بکە")}</a>
+        <a href="tel:+{WA1}" dir="ltr" class="inline-flex items-center gap-2 px-8 py-3 font-bold text-white bg-white/10 rounded-[14px] border-[1.5px] border-white/60 hover:bg-white/20 transition-colors"><i class="fa-solid fa-phone" aria-hidden="true"></i>{t("اتصل بنا", "Call Us", "پەیوەندیمان پێوە بکە")}</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Stats. TODO: confirm these numbers with the clinic -->
-<section id="stats" class="pt-8 pb-16 md:pt-12 md:pb-24 relative z-10">
+<section id="stats" class="pt-0 pb-14 md:pb-20 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5000<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("علاج ناجح", "Successful Treatments", "چارەسەری سەرکەوتوو")}</span></div>
-    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">4782<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("مريض سعيد", "Happy Patients", "نەخۆشی دڵخۆش")}</span></div>
-    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5.0 <span class="text-yellow-500 text-2xl md:text-3xl">★</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("تقييم جوجل", "Google Rating", "هەڵسەنگاندنی گوگڵ")}</span></div>
-    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">35<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("سنوات الخبرة", "Years of Experience", "ساڵانی ئەزموون")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-bold text-deepBlue" dir="ltr">5000<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("علاج ناجح", "Successful Treatments", "چارەسەری سەرکەوتوو")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-bold text-deepBlue" dir="ltr">4782<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("مريض سعيد", "Happy Patients", "نەخۆشی دڵخۆش")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-bold text-deepBlue" dir="ltr">5.0 <span class="text-yellow-500 text-2xl md:text-3xl">★</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("تقييم جوجل", "Google Rating", "هەڵسەنگاندنی گوگڵ")}</span></div>
+    <div class="stat-tile p-4 md:p-6 rounded-[20px] flex flex-col items-center"><span class="text-3xl md:text-5xl font-bold text-deepBlue" dir="ltr">35<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("سنوات الخبرة", "Years of Experience", "ساڵانی ئەزموون")}</span></div>
   </div>
 </section>
 
@@ -288,14 +299,14 @@ window.REVIEWS = [
 
 <section id="specialists" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <h2 class="text-center mb-8 md:mb-12 text-3xl md:text-5xl font-extrabold text-navyBlue text-glow">{t('فريقنا <span class="text-deepBlue">الطبي</span>', 'Our Medical <span class="text-deepBlue">Team</span>', 'تیمی <span class="text-deepBlue">پزیشکیمان</span>')}</h2>
+    <h2 class="text-center mb-8 md:mb-12 t-h2 font-bold text-navyBlue">{t('فريقنا <span class="text-deepBlue">الطبي</span>', 'Our Medical <span class="text-deepBlue">Team</span>', 'تیمی <span class="text-deepBlue">پزیشکیمان</span>')}</h2>
     <div class="flex flex-wrap justify-center gap-4 md:gap-6">{doctors}</div>
   </div>
 </section>
 
 <section id="services" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <h2 class="text-center mb-8 md:mb-12 text-3xl md:text-5xl font-extrabold text-navyBlue text-glow">{t('خدمات <span class="text-deepBlue">العيادة</span>', 'Clinic <span class="text-deepBlue">Services</span>', 'خزمەتگوزارییەکانی <span class="text-deepBlue">کلینیک</span>')}</h2>
+    <h2 class="text-center mb-8 md:mb-12 t-h2 font-bold text-navyBlue">{t('خدمات <span class="text-deepBlue">العيادة</span>', 'Clinic <span class="text-deepBlue">Services</span>', 'خزمەتگوزارییەکانی <span class="text-deepBlue">کلینیک</span>')}</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">{services}</div>
   </div>
 </section>
@@ -305,14 +316,14 @@ window.REVIEWS = [
   <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-6">
     <a href="gallery.html" class="glass-panel bg-white/75 hover:bg-white/90 rounded-[2rem] p-8 md:p-10 flex flex-col gap-3">
       <i class="fa-solid fa-wand-magic-sparkles text-3xl text-deepBlue" aria-hidden="true"></i>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navyBlue">{t("نتائج قبل وبعد", "Before &amp; After", "ئەنجامی پێش و دوای")}</h2>
-      <p class="text-navyBlue/80 font-semibold">{t("شاهد نتائج حقيقية لمرضانا في ابتسامة هوليود والتقويم والتبييض.", "See real results from our patients: Hollywood Smile, orthodontics, whitening and more.", "ئەنجامی ڕاستەقینەی نەخۆشەکانمان ببینە لە خەندەی هۆلیوود، ڕاستکردنەوە و سپیکردنەوەدا.")}</p>
+      <h2 class="t-h3 font-bold text-navyBlue">{t("نتائج قبل وبعد", "Before &amp; After", "ئەنجامی پێش و دوای")}</h2>
+      <p class="text-slate-600 font-normal">{t("شاهد نتائج حقيقية لمرضانا في ابتسامة هوليود والتقويم والتبييض.", "See real results from our patients: Hollywood Smile, orthodontics, whitening and more.", "ئەنجامی ڕاستەقینەی نەخۆشەکانمان ببینە لە خەندەی هۆلیوود، ڕاستکردنەوە و سپیکردنەوەدا.")}</p>
       <span class="font-bold text-deepBlue">{t("عرض المعرض ←", "View gallery →", "بینینی گەلەری ←")}</span>
     </a>
     <a href="tour.html" class="glass-panel bg-white/75 hover:bg-white/90 rounded-[2rem] p-8 md:p-10 flex flex-col gap-3">
       <i class="fa-solid fa-house-medical text-3xl text-deepBlue" aria-hidden="true"></i>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-navyBlue">{t("جولة في العيادة", "Clinic Tour", "گەشتێک بە کلینیکدا")}</h2>
-      <p class="text-navyBlue/80 font-semibold">{t("تعرّف على عيادتنا وتجهيزاتها قبل زيارتك.", "Take a look inside our clinic and equipment before your visit.", "پێش سەردانەکەت کلینیک و ئامێرەکانمان ببینە.")}</p>
+      <h2 class="t-h3 font-bold text-navyBlue">{t("جولة في العيادة", "Clinic Tour", "گەشتێک بە کلینیکدا")}</h2>
+      <p class="text-slate-600 font-normal">{t("تعرّف على عيادتنا وتجهيزاتها قبل زيارتك.", "Take a look inside our clinic and equipment before your visit.", "پێش سەردانەکەت کلینیک و ئامێرەکانمان ببینە.")}</p>
       <span class="font-bold text-deepBlue">{t("ابدأ الجولة ←", "Start the tour →", "دەستپێکردنی گەشت ←")}</span>
     </a>
   </div>
@@ -321,13 +332,13 @@ window.REVIEWS = [
 <section id="reviews" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-8">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-navyBlue">{t('ماذا يقول <span class="text-deepBlue">مرضانا</span>', 'What Our <span class="text-deepBlue">Patients Say</span>', 'نەخۆشەکانمان <span class="text-deepBlue">چی دەڵێن</span>')}</h2>
+      <h2 class="t-h2 font-bold text-navyBlue">{t('ماذا يقول <span class="text-deepBlue">مرضانا</span>', 'What Our <span class="text-deepBlue">Patients Say</span>', 'نەخۆشەکانمان <span class="text-deepBlue">چی دەڵێن</span>')}</h2>
       <div id="g-summary" class="card rounded-3xl px-5 py-4 flex flex-wrap items-center gap-x-5 gap-y-3">
         <div class="flex items-center gap-3">
           <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
           <div>
-            <div class="flex items-center gap-2"><span id="g-rating" class="text-3xl font-black text-navyBlue" dir="ltr">5.0</span><span class="text-yellow-400 text-xl tracking-wider" aria-hidden="true">★★★★★</span></div>
-            <a id="g-count-link" href="{MAPS}" target="_blank" rel="noopener" class="text-sm font-bold text-navyBlue/70 hover:text-deepBlue"><span id="g-count" dir="ltr">131</span> {t("مراجعة على جوجل", "Google reviews", "پێداچوونەوە لە گوگڵ")}</a>
+            <div class="flex items-center gap-2"><span id="g-rating" class="text-3xl font-bold text-navyBlue" dir="ltr">5.0</span><span class="text-yellow-400 text-xl tracking-wider" aria-hidden="true">★★★★★</span></div>
+            <a id="g-count-link" href="{MAPS}" target="_blank" rel="noopener" class="text-sm font-bold text-slate-600 hover:text-deepBlue"><span id="g-count" dir="ltr">131</span> {t("مراجعة على جوجل", "Google reviews", "پێداچوونەوە لە گوگڵ")}</a>
           </div>
         </div>
         <!-- TODO: your write-a-review link: https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID -->
@@ -343,10 +354,10 @@ window.REVIEWS = [
     <!-- Backup: the manual reviews below show only if the Trustindex widget does not load -->
     <div id="reviews-wrap" class="hidden relative">
       <div id="reviews-track" class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 no-scrollbar"></div>
-      <button type="button" id="rv-prev" aria-label="Previous" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -start-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-black"><span class="rtl:rotate-180 inline-block">&#8249;</span></button>
-      <button type="button" id="rv-next" aria-label="Next" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -end-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-black"><span class="rtl:rotate-180 inline-block">&#8250;</span></button>
+      <button type="button" id="rv-prev" aria-label="Previous" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -start-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-bold"><i class="fa-solid fa-chevron-left rtl:rotate-180" aria-hidden="true"></i></button>
+      <button type="button" id="rv-next" aria-label="Next" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -end-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-bold"><i class="fa-solid fa-chevron-right rtl:rotate-180" aria-hidden="true"></i></button>
       <div id="rv-dots" class="flex justify-center gap-2 mt-2"></div>
-      <p id="rv-attrib" class="hidden text-center text-xs text-navyBlue/50 font-semibold mt-2">{t("المراجعات من خرائط جوجل", "Reviews from Google Maps", "پێداچوونەوەکان لە نەخشەی گوگڵەوە")}</p>
+      <p id="rv-attrib" class="hidden text-center text-xs text-slate-500 font-semibold mt-2">{t("المراجعات من خرائط جوجل", "Reviews from Google Maps", "پێداچوونەوەکان لە نەخشەی گوگڵەوە")}</p>
     </div>
 
     <div id="reviews-empty" class="card rounded-3xl p-8 text-center space-y-4">
@@ -376,9 +387,9 @@ def build_services():
         def li(items, numbered=False):
             out = ""
             for i in range(len(items["en"])):
-                mark = (f'<span class="shrink-0 w-8 h-8 rounded-full bg-deepBlue text-white flex items-center justify-center font-black text-sm">{i+1}</span>'
+                mark = (f'<span class="shrink-0 w-8 h-8 rounded-full bg-deepBlue text-white flex items-center justify-center font-bold text-sm">{i+1}</span>'
                         if numbered else '<i class="fa-solid fa-check text-deepBlue mt-1.5" aria-hidden="true"></i>')
-                out += f'<li class="flex gap-3 items-start">{mark}<span class="font-semibold text-navyBlue/90 leading-relaxed">{t(items["ar"][i], items["en"][i], items["ku"][i])}</span></li>'
+                out += f'<li class="flex gap-3 items-start">{mark}<span class="font-normal text-slate-700 leading-relaxed">{t(items["ar"][i], items["en"][i], items["ku"][i])}</span></li>'
             return out
 
         gallery_link = ""
@@ -402,29 +413,29 @@ def build_services():
     </div>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-4">{t("لمن هذا العلاج؟", "Who is it for?", "ئەم چارەسەرە بۆ کێیە؟")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("لمن هذا العلاج؟", "Who is it for?", "ئەم چارەسەرە بۆ کێیە؟")}</h2>
         <ul class="space-y-3">{li(s["who"])}</ul>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-4">{t("خطوات العلاج", "How it works", "هەنگاوەکانی چارەسەر")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("خطوات العلاج", "How it works", "هەنگاوەکانی چارەسەر")}</h2>
         <ol class="space-y-3">{li(s["steps"], numbered=True)}</ol>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-4">{t("كم يستغرق؟", "How long does it take?", "چەند دەخایەنێت؟")}</h2>
-        <p class="flex gap-3 items-start font-semibold text-navyBlue/90"><i class="fa-regular fa-clock text-deepBlue mt-1" aria-hidden="true"></i>{tt(s["duration"])}</p>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("كم يستغرق؟", "How long does it take?", "چەند دەخایەنێت؟")}</h2>
+        <p class="flex gap-3 items-start font-semibold text-slate-700"><i class="fa-regular fa-clock text-deepBlue mt-1" aria-hidden="true"></i>{tt(s["duration"])}</p>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-4">{t("بعد العلاج", "Aftercare", "دوای چارەسەر")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("بعد العلاج", "Aftercare", "دوای چارەسەر")}</h2>
         <ul class="space-y-3">{li(s["after"])}</ul>
       </div>
     </div>
     <!-- TODO (optional): add a price range, e.g. "Starting from ..." -->
-    <p class="text-center text-sm text-navyBlue/70 font-semibold">{t("كل حالة مختلفة؛ يحدد الطبيب خطة العلاج المناسبة لك بعد الفحص.", "Every case is different. Your dentist will confirm the right plan for you after an examination.", "هەر حاڵەتێک جیاوازە؛ پزیشک دوای پشکنین پلانی گونجاوت بۆ دیاری دەکات.")}</p>
+    <p class="text-center text-sm text-slate-600 font-semibold">{t("كل حالة مختلفة؛ يحدد الطبيب خطة العلاج المناسبة لك بعد الفحص.", "Every case is different. Your dentist will confirm the right plan for you after an examination.", "هەر حاڵەتێک جیاوازە؛ پزیشک دوای پشکنین پلانی گونجاوت بۆ دیاری دەکات.")}</p>
   </div>
 </section>
 <section class="py-10">
   <div class="max-w-5xl mx-auto px-4 md:px-6">
-    <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-4 text-center">{t("خدمات أخرى", "Other services", "خزمەتگوزاری تر")}</h2>
+    <h2 class="t-h3 font-semibold text-navyBlue mb-4 text-center">{t("خدمات أخرى", "Other services", "خزمەتگوزاری تر")}</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-3">{others}</div>
   </div>
 </section>'''
@@ -449,16 +460,16 @@ def build_doctors():
   <img src="{d["photo"]}" alt="{n["en"]}" loading="lazy" class="w-full h-80 md:h-full object-cover object-top">
   <div class="p-6 md:p-10 space-y-5">
     <div>
-      <h2 class="text-2xl md:text-3xl font-black text-navyBlue">{tt(n)}</h2>
+      <h2 class="t-h2 font-bold text-navyBlue">{tt(n)}</h2>
       <p class="text-deepBlue font-bold text-lg mt-1">{tt(d["role"])}</p>
     </div>
     <!-- TODO: fill in the doctor's real details, then remove the comment markers.
-    <p class="text-navyBlue/85 font-semibold leading-relaxed">
+    <p class="text-slate-700 font-semibold leading-relaxed">
       <span class="lang-text lang-ar">نبذة قصيرة عن الطبيب ...</span>
       <span class="lang-text lang-en">Short bio ...</span>
       <span class="lang-text lang-ku">کورتەیەک دەربارەی پزیشک ...</span>
     </p>
-    <ul class="space-y-2 font-semibold text-navyBlue/90">
+    <ul class="space-y-2 font-semibold text-slate-700">
       <li><i class="fa-solid fa-graduation-cap text-deepBlue w-6" aria-hidden="true"></i> University / degree ...</li>
       <li><i class="fa-solid fa-briefcase-medical text-deepBlue w-6" aria-hidden="true"></i> Years of experience ...</li>
       <li><i class="fa-solid fa-language text-deepBlue w-6" aria-hidden="true"></i> Arabic, Kurdish, English ...</li>
@@ -562,9 +573,9 @@ window.TOUR = [
     <div class="card rounded-[2rem] p-6 md:p-10 grid md:grid-cols-[auto_1fr] gap-6 items-center">
       <i class="fa-solid fa-shield-virus text-5xl text-deepBlue" aria-hidden="true"></i>
       <div>
-        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-2">{t("سلامتك أولاً", "Your safety comes first", "سەلامەتی تۆ لە پێشەوەیە")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-2">{t("سلامتك أولاً", "Your safety comes first", "سەلامەتی تۆ لە پێشەوەیە")}</h2>
         <!-- TODO: ask the clinic to confirm this text matches their sterilization routine -->
-        <p class="font-semibold text-navyBlue/85 leading-relaxed">{t("نعقّم جميع الأدوات بعد كل مريض ونستخدم المواد ذات الاستخدام الواحد حيثما أمكن.", "All instruments are sterilized after every patient, and we use single-use materials wherever possible.", "هەموو ئامرازەکان دوای هەر نەخۆشێک بێگەرد دەکرێن و لە هەر شوێنێک بکرێت کەرەستەی یەکجار بەکارهاتوو بەکاردەهێنین.")}</p>
+        <p class="font-normal text-slate-700 leading-relaxed">{t("نعقّم جميع الأدوات بعد كل مريض ونستخدم المواد ذات الاستخدام الواحد حيثما أمكن.", "All instruments are sterilized after every patient, and we use single-use materials wherever possible.", "هەموو ئامرازەکان دوای هەر نەخۆشێک بێگەرد دەکرێن و لە هەر شوێنێک بکرێت کەرەستەی یەکجار بەکارهاتوو بەکاردەهێنین.")}</p>
       </div>
     </div>
     <div class="text-center">

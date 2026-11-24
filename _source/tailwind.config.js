@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       fontFamily: { sans: ['"Noto Sans Arabic"', 'Inter', 'sans-serif'] },
       colors: {
-        navyBlue: '#1a365d', iceBlue: '#00e5ff', deepBlue: '#0077ff',
+        navyBlue: '#1a365d', iceBlue: '#00e5ff', deepBlue: '#0062D6',
         whatsapp: '#15803D', whatsappDark: '#166534'
       },
       boxShadow: {
