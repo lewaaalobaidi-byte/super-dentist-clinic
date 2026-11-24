@@ -134,7 +134,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 {head_extra}
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -145,7 +145,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 </main>
 {FOOTER}
 {scripts}
-<script src="site.js?v=6"></script>
+<script src="site.js?v=7"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -221,11 +221,20 @@ def build_home():
         https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
      3. Paste both below. The site then shows the live rating, review count and up to 5 latest reviews.
    OPTION B - by hand: leave apiKey empty and paste real reviews WORD FOR WORD into REVIEWS:
-     { name: 'Ahmed K.', stars: 5, date: '2 months ago', text: 'review text exactly as on Google' },
+     { name: 'Ahmed K.', stars: 5, month: '2026-11', text: 'review text exactly as on Google' },   (month = year-month it was posted)
 */
 window.GOOGLE_REVIEWS = { apiKey: '', placeId: '' };
 window.REVIEWS = [
-
+  { name: 'Mohamad Ali S.', stars: 5, month: '2026-09', text: 'We called them after midnight, and they were incredibly responsive, accommodating, and professional. By the time we arrived, they were already waiting for us.\\n\\nDr. Mohammed and Dr. Sawin were both extremely friendly, welcoming, and reassuring. They performed the necessary procedure immediately, smoothly, and with great professionalism.\\n\\nWhat really stood out to us was the way they treated us. They made us feel more like family than regular patients, even though they stayed at the clinic until the early hours of the morning to make sure everything was taken care of.\\n\\nI highly recommend Dr. Mohammed and Dr. Sawin to anyone looking for caring, professional, and trustworthy doctors. Truly excellent service and exceptional human beings.' },
+  { name: 'Miran H.', stars: 5, month: '2026-02', text: 'Best service ever! I called for an emergency on Friday, and they responded very quickly and took care of everything the same day. Excellent service and very professional staff. Highly recommended!' },
+  { name: 'رؤى ر.', stars: 5, month: '2026-02', text: 'Excellent experience for my little daughter she didn’t feel any pain thanks for the 2 amazing dentists who were very professional in dealing with her fear!!! Definitely I’d  recommend ppl to do their teeth here!!!' },
+  { name: 'Mayss L.', stars: 5, month: '2026-01', text: 'عيادة تجنن مريحة ولطيفة والدكتور جداً متعاون ومتفهم ويسمع للمريض ويحاول بكل الطرق يخلي مرتاح وراضي يفهم بادق التفاصيل وينطي اجابات مقنعة ودقيقة كل التوفيق 💗' },
+  { name: 'RANDOMIII S.', stars: 5, month: '2026-07', text: 'Such a great dentist with great work , didn’t feel any pain it was quick , smooth and with great results. Definitely the best dentist in erbil 💗' },
+  { name: 'Taranom A.', stars: 5, month: '2026-01', text: 'أتقدم بخالص الشكر والتقدير إلى طبيب الأسنان العزيز وكادره الطبي المتفاني واللطيف. إن حسن التعامل، والصبر، والدقة في العمل جعلت تجربتي مريحة وممتعة. أتمنى لكم دوام الصحة والتوفيق والنجاح المستمر' },
+  { name: 'Aiesha A.', stars: 5, month: '2026-02', text: 'I had an excellent experience. The dentist did an amazing job and was very professional and gentle. The entire team was incredibly friendly and welcoming, which made me feel comfortable from the moment I arrived. I’m very happy with the results and highly recommend this clinic.' },
+  { name: 'alaa 2001', stars: 5, month: '2026-10', text: 'موجودين لحالات الطوارئ 24 ساعة شغلهم كلش زين واسعارهم مناسبه شكرا' },
+  { name: 'zayn A.', stars: 5, month: '2026-01', text: 'احسن عيادة أسنان خابرت الدكتور ساعة ٤ الفجر واجة ومقصر وشكرا جزيلاً' },
+  { name: 'Rawand B.', stars: 5, month: '2026-09', text: 'I had cleaning, and filling done. Was happy with the speed of the procedure and the capabilties of the whole staff.' }
 ];
 </script>'''
 
