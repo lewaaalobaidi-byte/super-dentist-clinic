@@ -259,3 +259,13 @@ footer.footer-glass { color: #334155; }
   .crystal > .cg-spec { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .crystal { transition: none; } a.crystal:hover { transform: none; } }
+
+/* Hero: clear glass so the video shows through */
+.crystal-dark {
+  background: linear-gradient(150deg, rgba(15,30,60,.22), rgba(10,25,55,.12)) !important;
+  -webkit-backdrop-filter: blur(5px) saturate(140%) !important; backdrop-filter: blur(5px) saturate(140%) !important;
+  border-color: rgba(255,255,255,.35) !important;
+}
+.crystal-dark > .cg-lens { background: linear-gradient(to bottom, rgba(255,255,255,.10), transparent 40%); }
+.crystal-dark > .cg-spec { display: none; }
+.crystal-dark h1, .crystal-dark p, .crystal-dark > span { text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(5,15,35,.45); }
