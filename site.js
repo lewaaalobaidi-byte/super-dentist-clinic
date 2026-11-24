@@ -201,6 +201,27 @@
 
   function renderReviews() {
     if (!document.getElementById('reviews-track')) return;
+    // Trustindex widget: use it when it loads, otherwise fall back to the manual list
+    var ti = document.getElementById('ti-widget');
+    if (ti) {
+      var hasWidget = function () {
+        return Array.prototype.some.call(ti.children, function (c) { return c.tagName !== 'SCRIPT' && c.offsetHeight > 20; });
+      };
+      var done = false;
+      var useWidget = function () {
+        if (done) return; done = true;
+        var sum = document.getElementById('g-summary'); if (sum) sum.classList.add('hidden');
+        var empty = document.getElementById('reviews-empty'); if (empty) empty.classList.add('hidden');
+      };
+      new MutationObserver(function () { if (hasWidget()) useWidget(); }).observe(ti, { childList: true, subtree: true });
+      setTimeout(function () {
+        if (hasWidget()) { useWidget(); return; }
+        done = true;
+        ti.classList.add('hidden');
+        showReviews(window.REVIEWS || [], false);
+      }, 8000);
+      return;
+    }
     var cfg = window.GOOGLE_REVIEWS || {};
     if (cfg.apiKey && cfg.placeId) {
       loadGoogleReviews(cfg).catch(function () { showReviews(window.REVIEWS || [], false); });
