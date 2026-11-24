@@ -235,7 +235,7 @@ DOCTORS = [
         "id": "sawin",
         "photo": "dr-sawin.jpg",
         "name": {"ar": "دكتورة ساوين خوشناو", "en": "Dr. Sawin Khoshnaw", "ku": "دکتۆرە ساوین خۆشناو"},
-        "role": {"ar": "تجميل الأسنان", "en": "Cosmetic Dentistry", "ku": "جوانکاری ددان"},
+        "role": {"ar": "طبيبة أسنان", "en": "Dentist", "ku": "پزیشکی ددان"},
         "services": ["cosmetic-dentistry"],
         "gallery": "cosmetic",
     },
