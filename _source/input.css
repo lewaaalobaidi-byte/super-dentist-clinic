@@ -49,14 +49,6 @@ a.glass-panel:hover {
 .text-glow { color: #1a365d; }
 .subtext-glow { color: #1a365d; }
 
-.specialist-card { flex: 1; transition: all .7s cubic-bezier(.25,.8,.25,1); min-height: 300px; }
-@media (min-width: 768px) {
-  .specialist-card { min-height: 400px; }
-  .specialists-container:hover .specialist-card { opacity: .7; }
-  .specialists-container .specialist-card:hover { flex: 2.5; opacity: 1; }
-}
-.specialist-card.active { flex: 2.5; opacity: 1; }
-
 /* Language toggle */
 .lang-text { display: none; }
 html[lang="ar"] .lang-ar { display: inline-block; }

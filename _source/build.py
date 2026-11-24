@@ -68,6 +68,15 @@ def nav(active):
 </nav>'''
 
 
+MOBILE_CTA = f'''
+<!-- Sticky booking bar: phones only -->
+<div id="mobile-cta" class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-white/95 border-t border-slate-200 shadow-[0_-4px_16px_rgba(15,23,42,.08)] px-3 pt-2 transition-transform duration-200" style="padding-bottom:calc(8px + env(safe-area-inset-bottom))">
+  <div class="flex gap-2">
+    <a href="tel:+{WA1}" class="flex-1 h-12 inline-flex items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-slate-300 bg-white font-bold text-slate-900"><i class="fa-solid fa-phone" aria-hidden="true"></i>{t("اتصل", "Call", "پەیوەندی")}</a>
+    <a href="https://wa.me/{WA1}" target="_blank" rel="noopener" dir="ltr" class="wa-link flex-[1.6] h-12 inline-flex items-center justify-center gap-2 rounded-[14px] bg-whatsapp hover:bg-whatsappDark font-bold text-white shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i>{t("احجز عبر واتساب", "Book on WhatsApp", "نۆرە بگرە لە واتسئاپ")}</a>
+  </div>
+</div>'''
+
 FOOTER = f'''
 <footer id="contact" class="relative z-10 mt-8 md:mt-12 border-t border-white/60 bg-white/85 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center space-y-8">
@@ -134,18 +143,19 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=10">
 {head_extra}
 </head>
-<body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
+<body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
 {bg}
 {nav(active)}
 <main>
 {body}
 </main>
 {FOOTER}
+{MOBILE_CTA}
 {scripts}
-<script src="site.js?v=9"></script>
+<script src="site.js?v=10"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -179,10 +189,10 @@ def build_home():
     doctors = ""
     for d in DOCTORS:
         doctors += f'''
-<a href="doctors.html#{d["id"]}" class="specialist-card relative isolate rounded-[20px] overflow-hidden bg-slate-200 border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
+<a href="doctors.html#{d["id"]}" class="doctor-card relative isolate w-full max-w-[420px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] aspect-[3/4] rounded-[20px] overflow-hidden bg-slate-200 hover:-translate-y-0.5 transition-transform border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
   <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
   <img src="{d["photo"]}" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="{d["name"]["en"]}">
-  <div class="relative z-10 transform md:translate-y-10 md:group-hover/item:translate-y-0 transition-transform duration-500 bg-white/85 p-3 md:p-4 rounded-xl md:rounded-2xl">
+  <div class="relative z-10 bg-white/90 p-4 rounded-2xl">
     <h3 class="text-xl md:text-2xl font-black text-navyBlue mb-1">{tt(d["name"])}</h3>
     <p class="text-deepBlue font-bold text-sm md:text-lg">{tt(d["role"])}</p>
     <span class="text-sm font-bold text-navyBlue/70">{t("الملف الشخصي ←", "View profile →", "پرۆفایل ←")}</span>
@@ -279,7 +289,7 @@ window.REVIEWS = [
 <section id="specialists" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <h2 class="text-center mb-8 md:mb-12 text-3xl md:text-5xl font-extrabold text-navyBlue text-glow">{t('فريقنا <span class="text-deepBlue">الطبي</span>', 'Our Medical <span class="text-deepBlue">Team</span>', 'تیمی <span class="text-deepBlue">پزیشکیمان</span>')}</h2>
-    <div class="flex flex-col md:flex-row h-auto md:h-[65vh] gap-4 specialists-container">{doctors}</div>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">{doctors}</div>
   </div>
 </section>
 
@@ -506,9 +516,9 @@ window.CASES = [
                        t("اسحب الخط لترى الفرق. جميع الصور لمرضى حقيقيين وبموافقتهم.", "Drag the line to see the difference. All photos are of real patients, shared with their permission.", "هێڵەکە ڕابکێشە بۆ بینینی جیاوازی. هەموو وێنەکان هی نەخۆشی ڕاستەقینەن و بە ڕەزامەندی خۆیان.")) + f'''
 <section class="pb-12">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <div class="flex flex-wrap justify-center gap-2 mb-8">{btns}</div>
+    <div id="gallery-filters" class="flex flex-wrap justify-center gap-2 mb-8">{btns}</div>
     <div id="gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    <p id="gallery-empty" class="hidden text-center font-bold text-navyBlue/70 py-12">{t("سنضيف حالات قريباً.", "Cases coming soon.", "بەم زووانە حاڵەت زیاد دەکەین.")}</p>
+    <div id="gallery-empty" class="hidden card rounded-[20px] max-w-xl mx-auto text-center p-8 space-y-2"><i class="fa-regular fa-images text-3xl text-cyan-600" aria-hidden="true"></i><p class="font-semibold text-navyBlue text-lg">{t("نضيف صور الحالات قريباً.", "Patient results are being added soon.", "بەم زووانە وێنەی حاڵەتەکان زیاد دەکەین.")}</p><p class="text-slate-500">{t("اطلب رؤية نتائج حالات مشابهة لحالتك عبر واتساب.", "Ask us on WhatsApp to see results for cases like yours.", "لە واتسئاپ داوای بینینی ئەنجامی حاڵەتی هاوشێوە بکە.")}</p></div>
     <div class="text-center mt-10">
       {wa_btn("مرحباً، رأيت نتائج قبل وبعد وأود حجز استشارة", "Hello, I saw your before & after results and I'd like to book a consultation", "سڵاو، ئەنجامی پێش و دوایم بینی و دەمەوێت نۆرەی ڕاوێژ بگرم", t("احجز استشارتك", "Book your consultation", "نۆرەی ڕاوێژ بگرە"))}
     </div>
@@ -548,6 +558,7 @@ window.TOUR = [
     </div>
     -->
     <div id="tour-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="tour-empty" class="hidden card rounded-[20px] max-w-xl mx-auto text-center p-8 space-y-2"><i class="fa-regular fa-images text-3xl text-cyan-600" aria-hidden="true"></i><p class="font-semibold text-navyBlue text-lg">{t("صور العيادة قريباً.", "Clinic photos coming soon.", "بەم زووانە وێنەی کلینیک.")}</p><p class="text-slate-500">{t("شاهد الفيديو في الصفحة الرئيسية أو زرنا مباشرة.", "Watch the video on our homepage, or come and visit.", "ڤیدیۆکە لە پەڕەی سەرەکی ببینە یان سەردانمان بکە.")}</p></div>
     <div class="card rounded-[2rem] p-6 md:p-10 grid md:grid-cols-[auto_1fr] gap-6 items-center">
       <i class="fa-solid fa-shield-virus text-5xl text-deepBlue" aria-hidden="true"></i>
       <div>

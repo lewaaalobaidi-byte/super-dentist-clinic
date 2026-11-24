@@ -18,11 +18,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=10">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "Super Dentist Clinic", "alternateName": "عيادة سوبر دينتست", "image": "super-dentist-logo.png", "telephone": ["+9647507227500", "+9647761212111"], "address": {"@type": "PostalAddress", "streetAddress": "120m Street, Lalav City View", "addressLocality": "Erbil", "addressCountry": "IQ"}, "medicalSpecialty": ["Orthodontic", "CosmeticDentistry"], "availableLanguage": ["ar", "en", "ku"]}</script>
 <!-- TODO: add "openingHours": ["Sa-Th 10:00-21:00"] (real hours) to the JSON above -->
 </head>
-<body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-[#f4f9fd]">
+<body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-[#f4f9fd]">
 
 
 <nav class="fixed w-full z-50 site-header">
@@ -108,29 +108,29 @@
 <section id="specialists" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <h2 class="text-center mb-8 md:mb-12 text-3xl md:text-5xl font-extrabold text-navyBlue text-glow"><span class="lang-text lang-ar">فريقنا <span class="text-deepBlue">الطبي</span></span><span class="lang-text lang-en">Our Medical <span class="text-deepBlue">Team</span></span><span class="lang-text lang-ku">تیمی <span class="text-deepBlue">پزیشکیمان</span></span></h2>
-    <div class="flex flex-col md:flex-row h-auto md:h-[65vh] gap-4 specialists-container">
-<a href="doctors.html#hussain" class="specialist-card relative isolate rounded-[20px] overflow-hidden bg-slate-200 border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+<a href="doctors.html#hussain" class="doctor-card relative isolate w-full max-w-[420px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] aspect-[3/4] rounded-[20px] overflow-hidden bg-slate-200 hover:-translate-y-0.5 transition-transform border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
   <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
   <img src="dr-hussain.jpg" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="Prof. Hussain Al Obaidi">
-  <div class="relative z-10 transform md:translate-y-10 md:group-hover/item:translate-y-0 transition-transform duration-500 bg-white/85 p-3 md:p-4 rounded-xl md:rounded-2xl">
+  <div class="relative z-10 bg-white/90 p-4 rounded-2xl">
     <h3 class="text-xl md:text-2xl font-black text-navyBlue mb-1"><span class="lang-text lang-ar">بروفيسور حسين العبيدي</span><span class="lang-text lang-en">Prof. Hussain Al Obaidi</span><span class="lang-text lang-ku">پڕۆفیسۆر حوسێن ئەلعوبێدی</span></h3>
     <p class="text-deepBlue font-bold text-sm md:text-lg"><span class="lang-text lang-ar">أخصائي تقويم الأسنان</span><span class="lang-text lang-en">Orthodontist</span><span class="lang-text lang-ku">پسپۆڕی ڕاستکردنەوەی ددان</span></p>
     <span class="text-sm font-bold text-navyBlue/70"><span class="lang-text lang-ar">الملف الشخصي ←</span><span class="lang-text lang-en">View profile →</span><span class="lang-text lang-ku">پرۆفایل ←</span></span>
   </div>
 </a>
-<a href="doctors.html#mohamed" class="specialist-card relative isolate rounded-[20px] overflow-hidden bg-slate-200 border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
+<a href="doctors.html#mohamed" class="doctor-card relative isolate w-full max-w-[420px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] aspect-[3/4] rounded-[20px] overflow-hidden bg-slate-200 hover:-translate-y-0.5 transition-transform border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
   <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
   <img src="dr-mohamed.jpg" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="Dr. Mohamed Al Obaidi">
-  <div class="relative z-10 transform md:translate-y-10 md:group-hover/item:translate-y-0 transition-transform duration-500 bg-white/85 p-3 md:p-4 rounded-xl md:rounded-2xl">
+  <div class="relative z-10 bg-white/90 p-4 rounded-2xl">
     <h3 class="text-xl md:text-2xl font-black text-navyBlue mb-1"><span class="lang-text lang-ar">دكتور محمد العبيدي</span><span class="lang-text lang-en">Dr. Mohamed Al Obaidi</span><span class="lang-text lang-ku">دکتۆر محەمەد ئەلعوبێدی</span></h3>
     <p class="text-deepBlue font-bold text-sm md:text-lg"><span class="lang-text lang-ar">طبيب أسنان</span><span class="lang-text lang-en">Dentist</span><span class="lang-text lang-ku">پزیشکی ددان</span></p>
     <span class="text-sm font-bold text-navyBlue/70"><span class="lang-text lang-ar">الملف الشخصي ←</span><span class="lang-text lang-en">View profile →</span><span class="lang-text lang-ku">پرۆفایل ←</span></span>
   </div>
 </a>
-<a href="doctors.html#sawin" class="specialist-card relative isolate rounded-[20px] overflow-hidden bg-slate-200 border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
+<a href="doctors.html#sawin" class="doctor-card relative isolate w-full max-w-[420px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] aspect-[3/4] rounded-[20px] overflow-hidden bg-slate-200 hover:-translate-y-0.5 transition-transform border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,.04),0_8px_24px_rgba(15,23,42,.08)] group/item flex flex-col justify-end p-6 md:p-8">
   <div class="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-transparent z-0"></div>
   <img src="dr-sawin.jpg" loading="lazy" class="absolute top-0 left-0 w-full h-full object-cover object-top z-[-1]" alt="Dr. Sawin Khoshnaw">
-  <div class="relative z-10 transform md:translate-y-10 md:group-hover/item:translate-y-0 transition-transform duration-500 bg-white/85 p-3 md:p-4 rounded-xl md:rounded-2xl">
+  <div class="relative z-10 bg-white/90 p-4 rounded-2xl">
     <h3 class="text-xl md:text-2xl font-black text-navyBlue mb-1"><span class="lang-text lang-ar">دكتورة ساوين خوشناو</span><span class="lang-text lang-en">Dr. Sawin Khoshnaw</span><span class="lang-text lang-ku">دکتۆرە ساوین خۆشناو</span></h3>
     <p class="text-deepBlue font-bold text-sm md:text-lg"><span class="lang-text lang-ar">تجميل الأسنان</span><span class="lang-text lang-en">Cosmetic Dentistry</span><span class="lang-text lang-ku">جوانکاری ددان</span></p>
     <span class="text-sm font-bold text-navyBlue/70"><span class="lang-text lang-ar">الملف الشخصي ←</span><span class="lang-text lang-en">View profile →</span><span class="lang-text lang-ku">پرۆفایل ←</span></span>
@@ -275,6 +275,14 @@
   </div>
 </footer>
 
+<!-- Sticky booking bar: phones only -->
+<div id="mobile-cta" class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-white/95 border-t border-slate-200 shadow-[0_-4px_16px_rgba(15,23,42,.08)] px-3 pt-2 transition-transform duration-200" style="padding-bottom:calc(8px + env(safe-area-inset-bottom))">
+  <div class="flex gap-2">
+    <a href="tel:+9647507227500" class="flex-1 h-12 inline-flex items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-slate-300 bg-white font-bold text-slate-900"><i class="fa-solid fa-phone" aria-hidden="true"></i><span class="lang-text lang-ar">اتصل</span><span class="lang-text lang-en">Call</span><span class="lang-text lang-ku">پەیوەندی</span></a>
+    <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" class="wa-link flex-[1.6] h-12 inline-flex items-center justify-center gap-2 rounded-[14px] bg-whatsapp hover:bg-whatsappDark font-bold text-white shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book on WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span></a>
+  </div>
+</div>
+
 <script>
 /* =====================  GOOGLE REVIEWS  =====================
    OPTION A - automatic & live (recommended):
@@ -300,7 +308,7 @@ window.REVIEWS = [
   { name: 'Rawand B.', stars: 5, month: '2026-09', text: 'I had cleaning, and filling done. Was happy with the speed of the procedure and the capabilties of the whole staff.' }
 ];
 </script>
-<script src="site.js?v=9"></script>
+<script src="site.js?v=10"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>

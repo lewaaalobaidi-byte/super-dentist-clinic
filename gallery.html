@@ -18,10 +18,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=10">
 
 </head>
-<body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-gradient-to-b from-sky-50 via-white to-sky-50">
+<body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-gradient-to-b from-sky-50 via-white to-sky-50">
 
 
 <nav class="fixed w-full z-50 site-header">
@@ -75,9 +75,9 @@
 </section>
 <section class="pb-12">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <div class="flex flex-wrap justify-center gap-2 mb-8"><button type="button" data-cat="all" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">الكل</span><span class="lang-text lang-en">All</span><span class="lang-text lang-ku">هەموو</span></button><button type="button" data-cat="hollywood" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">ابتسامة هوليود</span><span class="lang-text lang-en">Hollywood Smile</span><span class="lang-text lang-ku">خەندەی هۆلیوود</span></button><button type="button" data-cat="implants" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">زراعة الأسنان</span><span class="lang-text lang-en">Implants</span><span class="lang-text lang-ku">چاندنی ددان</span></button><button type="button" data-cat="cosmetic" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">تجميل الأسنان</span><span class="lang-text lang-en">Cosmetic</span><span class="lang-text lang-ku">جوانکاری</span></button><button type="button" data-cat="orthodontics" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">التقويم</span><span class="lang-text lang-en">Orthodontics</span><span class="lang-text lang-ku">ڕاستکردنەوە</span></button><button type="button" data-cat="whitening" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">التبييض</span><span class="lang-text lang-en">Whitening</span><span class="lang-text lang-ku">سپیکردنەوە</span></button></div>
+    <div id="gallery-filters" class="flex flex-wrap justify-center gap-2 mb-8"><button type="button" data-cat="all" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">الكل</span><span class="lang-text lang-en">All</span><span class="lang-text lang-ku">هەموو</span></button><button type="button" data-cat="hollywood" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">ابتسامة هوليود</span><span class="lang-text lang-en">Hollywood Smile</span><span class="lang-text lang-ku">خەندەی هۆلیوود</span></button><button type="button" data-cat="implants" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">زراعة الأسنان</span><span class="lang-text lang-en">Implants</span><span class="lang-text lang-ku">چاندنی ددان</span></button><button type="button" data-cat="cosmetic" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">تجميل الأسنان</span><span class="lang-text lang-en">Cosmetic</span><span class="lang-text lang-ku">جوانکاری</span></button><button type="button" data-cat="orthodontics" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">التقويم</span><span class="lang-text lang-en">Orthodontics</span><span class="lang-text lang-ku">ڕاستکردنەوە</span></button><button type="button" data-cat="whitening" class="filter-btn px-5 py-2 rounded-full font-bold text-navyBlue bg-white border border-navyBlue/15 hover:bg-sky-50 transition-colors"><span class="lang-text lang-ar">التبييض</span><span class="lang-text lang-en">Whitening</span><span class="lang-text lang-ku">سپیکردنەوە</span></button></div>
     <div id="gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    <p id="gallery-empty" class="hidden text-center font-bold text-navyBlue/70 py-12"><span class="lang-text lang-ar">سنضيف حالات قريباً.</span><span class="lang-text lang-en">Cases coming soon.</span><span class="lang-text lang-ku">بەم زووانە حاڵەت زیاد دەکەین.</span></p>
+    <div id="gallery-empty" class="hidden card rounded-[20px] max-w-xl mx-auto text-center p-8 space-y-2"><i class="fa-regular fa-images text-3xl text-cyan-600" aria-hidden="true"></i><p class="font-semibold text-navyBlue text-lg"><span class="lang-text lang-ar">نضيف صور الحالات قريباً.</span><span class="lang-text lang-en">Patient results are being added soon.</span><span class="lang-text lang-ku">بەم زووانە وێنەی حاڵەتەکان زیاد دەکەین.</span></p><p class="text-slate-500"><span class="lang-text lang-ar">اطلب رؤية نتائج حالات مشابهة لحالتك عبر واتساب.</span><span class="lang-text lang-en">Ask us on WhatsApp to see results for cases like yours.</span><span class="lang-text lang-ku">لە واتسئاپ داوای بینینی ئەنجامی حاڵەتی هاوشێوە بکە.</span></p></div>
     <div class="text-center mt-10">
       <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، رأيت نتائج قبل وبعد وأود حجز استشارة" data-wa-en="Hello, I saw your before & after results and I'd like to book a consultation" data-wa-ku="سڵاو، ئەنجامی پێش و دوایم بینی و دەمەوێت نۆرەی ڕاوێژ بگرم" class="wa-link inline-flex items-center justify-center gap-2 px-8 py-3 text-base font-bold text-white bg-whatsapp rounded-[14px] hover:bg-whatsappDark hover:-translate-y-px transition-all shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز استشارتك</span><span class="lang-text lang-en">Book your consultation</span><span class="lang-text lang-ku">نۆرەی ڕاوێژ بگرە</span></a>
     </div>
@@ -120,6 +120,14 @@
   </div>
 </footer>
 
+<!-- Sticky booking bar: phones only -->
+<div id="mobile-cta" class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-white/95 border-t border-slate-200 shadow-[0_-4px_16px_rgba(15,23,42,.08)] px-3 pt-2 transition-transform duration-200" style="padding-bottom:calc(8px + env(safe-area-inset-bottom))">
+  <div class="flex gap-2">
+    <a href="tel:+9647507227500" class="flex-1 h-12 inline-flex items-center justify-center gap-2 rounded-[14px] border-[1.5px] border-slate-300 bg-white font-bold text-slate-900"><i class="fa-solid fa-phone" aria-hidden="true"></i><span class="lang-text lang-ar">اتصل</span><span class="lang-text lang-en">Call</span><span class="lang-text lang-ku">پەیوەندی</span></a>
+    <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" class="wa-link flex-[1.6] h-12 inline-flex items-center justify-center gap-2 rounded-[14px] bg-whatsapp hover:bg-whatsappDark font-bold text-white shadow-cta"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book on WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span></a>
+  </div>
+</div>
+
 <script>
 /* =====================  BEFORE / AFTER CASES  =====================
    1. Put the photos in a folder called "gallery" next to this page.
@@ -141,7 +149,7 @@ window.CASES = [
     caption: { ar: 'تجميل الأسنان', en: 'Cosmetic bonding', ku: 'جوانکاری ددان' } }
 ];
 </script>
-<script src="site.js?v=9"></script>
+<script src="site.js?v=10"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
