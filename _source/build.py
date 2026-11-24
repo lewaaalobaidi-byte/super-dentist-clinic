@@ -152,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=21">
+<link rel="stylesheet" href="styles.css?v=22">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -164,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=21"></script>
+<script src="site.js?v=22"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -217,13 +217,22 @@ def build_home():
         "pediatric-dentistry": ("fa-child-reaching", "#EA580C", "#FDE68A"),
         "laser-whitening": ("fa-sun", "#0284C7", "#E0F2FE"),
     }
+    STOCK = {  # free Unsplash photos (Unsplash License: free commercial use, no attribution required)
+        "hollywood-smile": "photo-1489278353717-f64c6ee8a4d2",
+        "dental-implants": "photo-1593022356769-11f762e25ed9",
+        "cosmetic-dentistry": "photo-1677026010083-78ec7f1b84ed",
+        "orthodontics": "photo-1598256989809-394fa4f6cd26",
+        "root-canal": "photo-1588776814546-1ffcf47267a5",
+        "pediatric-dentistry": "photo-1758205307836-0829c799890b",
+        "laser-whitening": "photo-1654373535457-383a0a4d00f9",
+    }
     services = ""
     for s in SERVICES:
         icon, c1, c2 = COVERS[s["slug"]]
         services += f'''
 <a href="{s["slug"]}.html" class="svc-card glass-panel group flex flex-col !p-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
   <div class="svc-cover has-photo relative aspect-[16/10] overflow-hidden rounded-t-[23px]" style="--c1:{c1};--c2:{c2}" data-photo="services/{s["slug"]}.jpg">
-    <img src="services/{s["slug"]}.svg" alt="" width="400" height="250" loading="lazy">
+    <img src="https://images.unsplash.com/{STOCK[s["slug"]]}?auto=format&amp;fit=crop&amp;crop=faces,entropy&amp;w=900&amp;h=563&amp;q=72" alt="{s["title"]["en"]}" width="900" height="563" loading="lazy" onerror="this.onerror=null;this.src='services/{s["slug"]}.svg'">
   </div>
   <div class="p-5 md:p-6 flex flex-col gap-2 flex-1">
     <h3 class="text-lg md:text-xl font-semibold text-navyBlue">{tt(s["title"])}</h3>
