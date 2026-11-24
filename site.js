@@ -10,7 +10,8 @@
   var UI = {
     before: { ar: 'قبل', en: 'Before', ku: 'پێش' },
     after: { ar: 'بعد', en: 'After', ku: 'دوای' },
-    original: { ar: 'بلغة المراجع الأصلية', en: 'Original language', ku: 'بە زمانی ڕەسەن' }
+    readMore: { ar: 'اقرأ المزيد', en: 'Read more', ku: 'زیاتر بخوێنەوە' },
+    less: { ar: 'عرض أقل', en: 'Show less', ku: 'کەمتر' }
   };
   var current = 'ar';
 
@@ -82,39 +83,148 @@
     });
   }
 
-  // ---------- Reviews (homepage) ----------
-  function renderReviews() {
-    var box = document.getElementById('reviews-list');
-    var list = window.REVIEWS || [];
-    if (!box || !list.length) return;
-    box.innerHTML = '';
-    list.forEach(function (r) {
-      var card = document.createElement('div');
-      card.className = 'glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl bg-white/80';
-      var head = document.createElement('div');
-      head.className = 'flex justify-between items-start mb-2 gap-3';
-      var name = document.createElement('h4');
-      name.className = 'font-bold text-navyBlue text-base md:text-lg';
-      name.textContent = r.name;
-      var stars = document.createElement('span');
-      stars.className = 'text-yellow-500 text-sm whitespace-nowrap';
-      stars.textContent = '★★★★★'.slice(0, r.stars || 5);
-      head.appendChild(name); head.appendChild(stars);
-      var p = document.createElement('p');
-      p.className = 'text-navyBlue/90 font-semibold text-sm md:text-base leading-relaxed';
-      p.textContent = '"' + r.text + '"';
-      if (r.lang) p.setAttribute('lang', r.lang);
-      if (r.lang) p.setAttribute('dir', r.lang === 'en' ? 'ltr' : 'rtl');
-      card.appendChild(head); card.appendChild(p);
-      if (r.date) {
-        var d = document.createElement('span');
-        d.className = 'block mt-2 text-xs text-navyBlue/60';
-        d.textContent = 'Google · ' + r.date;
-        card.appendChild(d);
-      }
-      box.appendChild(card);
+  // ---------- Google reviews (homepage) ----------
+  var COLORS = ['#1a73e8', '#0f9d58', '#f4b400', '#db4437', '#7b1fa2', '#00838f', '#5d4037', '#c2185b'];
+  function avatar(name, photo) {
+    var el;
+    if (photo) {
+      el = document.createElement('img');
+      el.src = photo; el.alt = ''; el.referrerPolicy = 'no-referrer'; el.loading = 'lazy';
+      el.className = 'w-11 h-11 rounded-full object-cover shrink-0';
+      return el;
+    }
+    el = document.createElement('div');
+    var h = 0; for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    el.className = 'w-11 h-11 rounded-full shrink-0 flex items-center justify-center text-white font-black text-lg';
+    el.style.background = COLORS[h % COLORS.length];
+    el.textContent = (name.trim()[0] || '?').toUpperCase();
+    return el;
+  }
+
+  function reviewCard(r) {
+    var card = document.createElement('article');
+    card.className = 'card snap-start shrink-0 w-[85%] sm:w-[46%] lg:w-[31.5%] rounded-3xl p-6 flex flex-col gap-4';
+
+    var head = document.createElement('div'); head.className = 'flex items-center gap-3';
+    head.appendChild(avatar(r.name, r.photo));
+    var who = document.createElement('div'); who.className = 'min-w-0 flex-1';
+    var nm = document.createElement(r.url ? 'a' : 'div');
+    if (r.url) { nm.href = r.url; nm.target = '_blank'; nm.rel = 'noopener'; }
+    nm.className = 'block font-bold text-navyBlue truncate hover:text-deepBlue'; nm.textContent = r.name; nm.setAttribute('dir', 'auto');
+    var dt = document.createElement('div'); dt.className = 'text-xs font-semibold text-navyBlue/55'; dt.textContent = r.date || ''; dt.setAttribute('dir', 'auto');
+    who.appendChild(nm); who.appendChild(dt);
+    var g = document.createElement('span');
+    g.innerHTML = '<svg class="w-5 h-5" viewBox="0 0 24 24" aria-label="Google"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>';
+    head.appendChild(who); head.appendChild(g);
+
+    var stars = document.createElement('div');
+    stars.className = 'text-yellow-400 text-lg tracking-wider leading-none'; stars.setAttribute('aria-label', (r.stars || 5) + ' / 5');
+    var n = Math.round(r.stars || 5); stars.innerHTML = '★★★★★'.slice(0, n) + '<span class="text-slate-200">' + '★★★★★'.slice(0, 5 - n) + '</span>';
+
+    var txt = document.createElement('p');
+    txt.className = 'text-navyBlue/85 font-medium leading-relaxed line-clamp-5'; txt.setAttribute('dir', 'auto');
+    txt.textContent = r.text || '';
+    var more = document.createElement('button');
+    more.type = 'button'; more.className = 'hidden self-start text-sm font-bold text-deepBlue hover:underline';
+    more.setAttribute('data-i18n', 'readMore'); more.textContent = UI.readMore[current];
+    more.addEventListener('click', function () {
+      var open = txt.classList.toggle('line-clamp-5');
+      more.setAttribute('data-i18n', open ? 'readMore' : 'less');
+      more.textContent = UI[open ? 'readMore' : 'less'][current];
     });
-    box.classList.remove('hidden');
+    [head, stars, txt, more].forEach(function (el) { card.appendChild(el); });
+    requestAnimationFrame(function () { if (txt.scrollHeight > txt.clientHeight + 2) more.classList.remove('hidden'); });
+    return card;
+  }
+
+  function showReviews(list, fromGoogle) {
+    var wrap = document.getElementById('reviews-wrap');
+    var track = document.getElementById('reviews-track');
+    if (!wrap || !track || !list.length) return;
+    track.innerHTML = '';
+    list.forEach(function (r) { track.appendChild(reviewCard(r)); });
+    wrap.classList.remove('hidden');
+    var empty = document.getElementById('reviews-empty'); if (empty) empty.classList.add('hidden');
+    var at = document.getElementById('rv-attrib'); if (at) at.classList.toggle('hidden', !fromGoogle);
+
+    // dots + arrows + gentle auto-play
+    var dots = document.getElementById('rv-dots'); dots.innerHTML = '';
+    var cards = track.children;
+    Array.prototype.forEach.call(cards, function (c, i) {
+      var d = document.createElement('button'); d.type = 'button'; d.setAttribute('aria-label', 'Review ' + (i + 1));
+      d.className = 'w-2.5 h-2.5 rounded-full bg-navyBlue/20 transition-all';
+      d.addEventListener('click', function () { go(i); }); dots.appendChild(d);
+    });
+    var idx = 0;
+    function go(i) {
+      idx = (i + cards.length) % cards.length;
+      var c = cards[idx];
+      track.scrollTo({ left: c.offsetLeft - track.offsetLeft - (root.dir === 'rtl' ? track.clientWidth - c.offsetWidth : 0), behavior: 'smooth' });
+    }
+    function step(dir) {
+      var maxed = Math.abs(track.scrollLeft) + track.clientWidth >= track.scrollWidth - 8;
+      if (dir > 0 && maxed) go(0); else go(idx + dir);
+    }
+    track.addEventListener('scroll', function () {
+      var best = 0, bestD = Infinity, tr = track.getBoundingClientRect(), rtl = root.dir === 'rtl';
+      Array.prototype.forEach.call(cards, function (c, i) {
+        var r = c.getBoundingClientRect(), dd = rtl ? Math.abs(r.right - tr.right) : Math.abs(r.left - tr.left);
+        if (dd < bestD) { bestD = dd; best = i; }
+      });
+      idx = best;
+      Array.prototype.forEach.call(dots.children, function (d, i) {
+        d.className = 'h-2.5 rounded-full transition-all ' + (i === best ? 'w-6 bg-deepBlue' : 'w-2.5 bg-navyBlue/20');
+      });
+    }, { passive: true });
+    track.dispatchEvent(new Event('scroll'));
+    document.getElementById('rv-prev').onclick = function () { step(-1); };
+    document.getElementById('rv-next').onclick = function () { step(1); };
+    var paused = false;
+    wrap.addEventListener('mouseenter', function () { paused = true; });
+    wrap.addEventListener('mouseleave', function () { paused = false; });
+    track.addEventListener('touchstart', function () { paused = true; }, { passive: true });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && cards.length > 1) {
+      setInterval(function () { if (!paused && !document.hidden) step(1); }, 6000);
+    }
+  }
+
+  function renderReviews() {
+    if (!document.getElementById('reviews-track')) return;
+    var cfg = window.GOOGLE_REVIEWS || {};
+    if (cfg.apiKey && cfg.placeId) {
+      loadGoogleReviews(cfg).catch(function () { showReviews(window.REVIEWS || [], false); });
+    } else {
+      showReviews(window.REVIEWS || [], false);
+    }
+  }
+
+  // Live reviews from Google (Places API, New). Needs apiKey + placeId in index.html.
+  function loadGoogleReviews(cfg) {
+    return new Promise(function (resolve, reject) {
+      window.__sdGoogleReady = resolve;
+      var sc = document.createElement('script');
+      sc.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(cfg.apiKey) +
+               '&v=weekly&loading=async&language=' + (current === 'ku' ? 'ar' : current) + '&callback=__sdGoogleReady';
+      sc.async = true; sc.onerror = reject;
+      document.head.appendChild(sc);
+    }).then(function () {
+      return google.maps.importLibrary('places');
+    }).then(function (lib) {
+      var place = new lib.Place({ id: cfg.placeId });
+      return place.fetchFields({ fields: ['rating', 'userRatingCount', 'reviews', 'googleMapsURI'] }).then(function () { return place; });
+    }).then(function (place) {
+      if (place.rating) document.getElementById('g-rating').textContent = place.rating.toFixed(1);
+      if (place.userRatingCount) document.getElementById('g-count').textContent = place.userRatingCount;
+      if (place.googleMapsURI) document.getElementById('g-count-link').href = place.googleMapsURI;
+      document.getElementById('g-write').href = 'https://search.google.com/local/writereview?placeid=' + encodeURIComponent(cfg.placeId);
+      var list = (place.reviews || []).filter(function (r) { return r.text; }).map(function (r) {
+        var a = r.authorAttribution || {};
+        return { name: a.displayName || 'Google user', photo: a.photoURI, url: a.uri, stars: r.rating,
+                 date: r.relativePublishTimeDescription, text: r.text };
+      });
+      if (!list.length) throw new Error('no reviews');
+      showReviews(list, true);
+    });
   }
 
   // ---------- Before / after gallery ----------

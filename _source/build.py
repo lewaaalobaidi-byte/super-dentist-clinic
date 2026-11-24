@@ -134,7 +134,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 {head_extra}
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -145,7 +145,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 </main>
 {FOOTER}
 {scripts}
-<script src="site.js?v=5"></script>
+<script src="site.js?v=6"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -213,13 +213,17 @@ def build_home():
 
     reviews_script = '''
 <script>
-/* =====================  REAL GOOGLE REVIEWS  =====================
-   Copy reviews WORD FOR WORD from the clinic's Google page and add them here.
-   Use the reviewer's first name + initial, the star count, and the month.
-   lang = the language the review was written in ('ar', 'en' or 'ku').
-   Example:
-     { name: 'Ahmed K.', stars: 5, lang: 'ar', date: '2026-10', text: 'نص المراجعة كما هو في جوجل' },
-   While this list is empty, the section just shows the Google rating + buttons. */
+/* =====================  GOOGLE REVIEWS  =====================
+   OPTION A - automatic & live (recommended):
+     1. In Google Cloud Console create an API key and enable "Maps JavaScript API" and "Places API (New)".
+        Restrict the key to your website (HTTP referrers: lewaaalobaidi-byte.github.io/*).
+     2. Find the clinic's Place ID:
+        https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+     3. Paste both below. The site then shows the live rating, review count and up to 5 latest reviews.
+   OPTION B - by hand: leave apiKey empty and paste real reviews WORD FOR WORD into REVIEWS:
+     { name: 'Ahmed K.', stars: 5, date: '2 months ago', text: 'review text exactly as on Google' },
+*/
+window.GOOGLE_REVIEWS = { apiKey: '', placeId: '' };
 window.REVIEWS = [
 
 ];
@@ -296,30 +300,42 @@ window.REVIEWS = [
 </section>
 
 <section id="reviews" class="py-12 md:py-16 relative z-10">
-  <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
-    <div class="space-y-6">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-navyBlue text-glow">{t('ماذا يقول <span class="text-deepBlue">مرضانا</span>', 'What Our <span class="text-deepBlue">Patients Say</span>', 'نەخۆشەکانمان <span class="text-deepBlue">چی دەڵێن</span>')}</h2>
-      <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-4 glass-panel px-5 md:px-6 py-3 md:py-4 rounded-full bg-white/80 hover:bg-white">
-        <i class="fa-brands fa-google text-2xl text-[#4285F4]" aria-hidden="true"></i>
-        <div>
-          <div class="text-yellow-500 text-lg" aria-hidden="true">★★★★★</div>
-          <span class="text-navyBlue font-extrabold text-xs md:text-sm block">{t("تقييم 5.0 من أصل 131 مراجعة على جوجل", "5.0 rating from 131 Google reviews", "هەڵسەنگاندنی 5.0 لە 131 پێداچوونەوەی گوگڵ")}</span>
+  <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <h2 class="text-3xl md:text-5xl font-extrabold text-navyBlue">{t('ماذا يقول <span class="text-deepBlue">مرضانا</span>', 'What Our <span class="text-deepBlue">Patients Say</span>', 'نەخۆشەکانمان <span class="text-deepBlue">چی دەڵێن</span>')}</h2>
+      <div class="card rounded-3xl px-5 py-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+        <div class="flex items-center gap-3">
+          <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          <div>
+            <div class="flex items-center gap-2"><span id="g-rating" class="text-3xl font-black text-navyBlue" dir="ltr">5.0</span><span class="text-yellow-400 text-xl tracking-wider" aria-hidden="true">★★★★★</span></div>
+            <a id="g-count-link" href="{MAPS}" target="_blank" rel="noopener" class="text-sm font-bold text-navyBlue/70 hover:text-deepBlue"><span id="g-count" dir="ltr">131</span> {t("مراجعة على جوجل", "Google reviews", "پێداچوونەوە لە گوگڵ")}</a>
+          </div>
         </div>
-      </a>
-      <div id="reviews-list" class="hidden space-y-4 max-h-[450px] overflow-y-auto pe-1"></div>
-      <div class="flex flex-wrap gap-3">
-        <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-white bg-navyBlue rounded-full hover:bg-deepBlue">{t("عرض جميع المراجعات", "See all reviews", "هەموو پێداچوونەوەکان ببینە")}</a>
-        <!-- TODO: replace href with your "write a review" link:
-             https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID
-             (find the Place ID at developers.google.com/maps/documentation/places/web-service/place-id) -->
-        <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-navyBlue bg-white/85 rounded-full hover:bg-white shadow"><i class="fa-solid fa-pen" aria-hidden="true"></i>{t("اكتب تقييمك", "Write a review", "هەڵسەنگاندن بنووسە")}</a>
+        <!-- TODO: your write-a-review link: https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID -->
+        <a id="g-write" href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-white bg-[#1a73e8] rounded-full hover:bg-[#1558b0] text-sm"><i class="fa-solid fa-pen" aria-hidden="true"></i>{t("اكتب تقييمك", "Write a review", "هەڵسەنگاندن بنووسە")}</a>
       </div>
     </div>
-    <div class="flex flex-col gap-3">
-      <!-- TODO: replace src with the official embed (Google Maps → Share → Embed a map) -->
-      <div class="h-[320px] md:h-[450px] glass-panel rounded-[2rem] overflow-hidden p-2 bg-white/40">
-        <iframe src="https://maps.google.com/maps?q=Super+dentists+clinic+Erbil&t=&z=16&ie=UTF8&iwloc=&output=embed" title="Super Dentist Clinic location" width="100%" height="100%" style="border:0;border-radius:1.5rem" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+
+    <div id="reviews-wrap" class="hidden relative">
+      <div id="reviews-track" class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 no-scrollbar"></div>
+      <button type="button" id="rv-prev" aria-label="Previous" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -start-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-black"><span class="rtl:rotate-180 inline-block">&#8249;</span></button>
+      <button type="button" id="rv-next" aria-label="Next" class="hidden md:flex absolute top-[45%] -translate-y-1/2 -end-5 w-11 h-11 rounded-full bg-white shadow-lg text-navyBlue items-center justify-center hover:bg-sky-50 text-xl font-black"><span class="rtl:rotate-180 inline-block">&#8250;</span></button>
+      <div id="rv-dots" class="flex justify-center gap-2 mt-2"></div>
+      <p id="rv-attrib" class="hidden text-center text-xs text-navyBlue/50 font-semibold mt-2">{t("المراجعات من خرائط جوجل", "Reviews from Google Maps", "پێداچوونەوەکان لە نەخشەی گوگڵەوە")}</p>
+    </div>
+
+    <div id="reviews-empty" class="card rounded-3xl p-8 text-center space-y-4">
+      <p class="text-navyBlue font-bold text-lg">{t("اقرأ تجارب مرضانا الحقيقية على جوجل.", "Read real experiences from our patients on Google.", "ئەزموونی ڕاستەقینەی نەخۆشەکانمان لە گوگڵ بخوێنەوە.")}</p>
+      <a href="{MAPS}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-white bg-navyBlue rounded-full hover:bg-deepBlue">{t("عرض جميع المراجعات", "See all reviews", "هەموو پێداچوونەوەکان ببینە")}</a>
+    </div>
+  </div>
+</section>
+
+<section id="location" class="pb-12 md:pb-16 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <!-- TODO: replace src with the official embed (Google Maps -> Share -> Embed a map) -->
+    <div class="h-[320px] md:h-[420px] card rounded-[2rem] overflow-hidden p-2">
+      <iframe src="https://maps.google.com/maps?q=Super+dentists+clinic+Erbil&t=&z=16&ie=UTF8&iwloc=&output=embed" title="Super Dentist Clinic location" width="100%" height="100%" style="border:0;border-radius:1.5rem" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>'''

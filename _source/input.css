@@ -77,3 +77,6 @@ a:hover .logo-metal::after { animation-duration: 1.6s; }
   100% { background-position: -50% 0; }
 }
 @media (prefers-reduced-motion: reduce) { .logo-metal::after { animation: none; display: none; } }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
