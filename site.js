@@ -410,7 +410,7 @@
 
 
   // ---------- Crystal glass (adapted from "Glass Card" by educalvolpz, 21st.dev) ----------
-  var CG_LAYERS = ['cg-body', 'cg-rim', 'cg-chroma', 'cg-spec', 'cg-sweep', 'cg-ring'];
+  var CG_LAYERS = ['cg-lens', 'cg-spec'];
   var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
                   !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function crystalize(el) {
@@ -437,16 +437,7 @@
     (root || document).querySelectorAll('.card, .glass-panel, .stat-tile, .crystal-panel').forEach(crystalize);
   }
   window.crystalizeAll = crystalizeAll;
-  (function initCrystal() {
-    // Refraction filter, used where the browser supports SVG filters inside backdrop-filter (Chromium)
-    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('width', '0'); svg.setAttribute('height', '0');
-    svg.style.position = 'absolute';
-    svg.innerHTML = '<filter id="cg-refract"><feTurbulence type="fractalNoise" baseFrequency="0.016 0.024" numOctaves="2" seed="7" result="n"/>' +
-      '<feGaussianBlur in="n" stdDeviation="1.4" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter>';
-    document.body.appendChild(svg);
-    try { if (CSS.supports('backdrop-filter', 'url(#cg-refract) blur(2px)')) root.classList.add('cg-displace'); } catch (e) {}
-  })();
+
 
   // ---------- Start ----------
   document.querySelectorAll('img').forEach(fallback);

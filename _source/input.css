@@ -137,102 +137,125 @@ main > section#location { padding-top: 0; }
 /* ===== Language switch: bigger targets ===== */
 #btn-ar, #btn-en, #btn-ku { min-height: 34px; min-width: 40px; }
 
+
+
+main > section.page-head { padding-top: calc(96px + clamp(28px, 4vw, 64px)) !important; padding-bottom: 28px !important; }
+main > section.page-head + section { padding-top: 8px !important; }
+
 /* =====================================================================
-   CRYSTAL GLASS THEME
-   Adapted from "Glass Card" by educalvolpz (21st.dev): frosted body,
-   refractive rim, chromatic edge, pointer-tracked specular highlight.
+   MAC LIQUID GLASS THEME
+   Whole surfaces are glass: vivid wallpaper behind, frosted translucent
+   panels, white lens highlights, soft depth. (Pointer highlight adapted
+   from "Glass Card" by educalvolpz, 21st.dev.)
    ===================================================================== */
+:root {
+  --glass: rgba(255,255,255,.42);
+  --glass-strong: rgba(255,255,255,.62);
+  --glass-edge: rgba(255,255,255,.65);
+  --glass-blur: blur(28px) saturate(185%);
+  --glass-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -1px 1px rgba(255,255,255,.18) inset,
+                  0 0 0 1px rgba(255,255,255,.22) inset, 0 22px 48px -22px rgba(20,40,90,.38), 0 6px 16px -10px rgba(20,40,90,.22);
+}
 
-/* Soft colour glows behind the page so the glass has something to refract */
+/* Wallpaper: vivid pastel colour field, like a macOS desktop */
+body { background: #d8e6fb !important; }
 body::before {
-  content: ""; position: fixed; inset: -10vmax; z-index: -1; pointer-events: none;
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(38vmax 38vmax at 12% 18%, rgba(56,189,248,.30), transparent 70%),
-    radial-gradient(34vmax 34vmax at 88% 30%, rgba(99,102,241,.20), transparent 70%),
-    radial-gradient(40vmax 40vmax at 30% 85%, rgba(45,212,191,.20), transparent 70%),
-    radial-gradient(30vmax 30vmax at 80% 88%, rgba(236,72,153,.10), transparent 70%),
-    #eef5fb;
+    radial-gradient(60vmax 50vmax at 0% 0%, rgba(59,130,246,.55), transparent 60%),
+    radial-gradient(50vmax 45vmax at 100% 10%, rgba(139,92,246,.42), transparent 62%),
+    radial-gradient(55vmax 50vmax at 15% 100%, rgba(20,184,166,.45), transparent 60%),
+    radial-gradient(45vmax 40vmax at 95% 95%, rgba(236,72,153,.28), transparent 62%),
+    radial-gradient(40vmax 35vmax at 55% 50%, rgba(125,211,252,.45), transparent 65%),
+    linear-gradient(160deg, #cfe0fb 0%, #e4ddfb 50%, #d3f1ee 100%);
 }
-body.bg-\[\#f4f9fd\], body { background-color: transparent; }
 
-.crystal {
-  --r: 22px; --rim: 9px; --tint: rgba(255,255,255,.58);
+/* Glass surface */
+.crystal, .glass-panel, .card, .stat-tile {
   position: relative; isolation: isolate; overflow: hidden;
-  border-radius: var(--r) !important;
-  background: transparent !important; border: 0 !important;
-  box-shadow: 0 24px 50px -26px rgba(15,35,70,.38), 0 10px 24px -18px rgba(15,35,70,.28) !important;
-  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s;
+  background: linear-gradient(150deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.34) 55%, rgba(255,255,255,.26) 100%) !important;
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--glass-shadow) !important;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, background .3s;
 }
-.crystal > .cg { position: absolute; pointer-events: none; z-index: -1; border-radius: inherit; }
-.crystal > .cg-body {
-  inset: var(--rim); border-radius: calc(var(--r) - var(--rim));
-  background: var(--tint);
-  -webkit-backdrop-filter: blur(14px) saturate(160%) brightness(1.03);
-          backdrop-filter: blur(14px) saturate(160%) brightness(1.03);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 0 0 1px rgba(255,255,255,.22);
-}
-.crystal > .cg-rim, .crystal > .cg-chroma {
-  inset: 0; box-sizing: border-box; padding: var(--rim);
-  -webkit-mask: linear-gradient(#000,#000) content-box, linear-gradient(#000,#000) border-box;
-  -webkit-mask-composite: xor;
-          mask: linear-gradient(#000,#000) content-box exclude, linear-gradient(#000,#000) border-box;
-}
-.crystal > .cg-rim {
-  background: rgba(255,255,255,.16);
-  -webkit-backdrop-filter: blur(1.5px) saturate(175%) brightness(1.08);
-          backdrop-filter: blur(1.5px) saturate(175%) brightness(1.08);
-}
-html.cg-displace .crystal > .cg-rim { backdrop-filter: url(#cg-refract) blur(1.5px) saturate(175%) brightness(1.08); }
-.crystal > .cg-chroma {
-  background: linear-gradient(125deg, rgba(103,232,249,.55) 0%, transparent 36%, transparent 64%, rgba(244,114,182,.45) 100%);
-  mix-blend-mode: plus-lighter;
-  transform: translate(var(--rx,0px), var(--ry,0px)); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+/* lens highlight: light caught at the top-left of the glass */
+.crystal > .cg { position: absolute; pointer-events: none; z-index: -1; margin: 0 !important; }
+.crystal > .cg-lens {
+  inset: 0; border-radius: inherit;
+  background:
+    radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.55), transparent 55%),
+    linear-gradient(to bottom, rgba(255,255,255,.18), transparent 35%);
 }
 .crystal > .cg-spec {
-  width: 280px; height: 280px; left: 30%; top: 28%; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,255,255,.12) 48%, transparent 74%);
-  mix-blend-mode: soft-light;
-  transform: translate(var(--sx,0px), var(--sy,0px)); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+  width: 320px; height: 320px; left: 30%; top: 28%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,255,255,.45), rgba(255,255,255,.1) 50%, transparent 75%);
+  transform: translate(calc(var(--sx,0px) - 160px), calc(var(--sy,0px) - 160px));
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .3s; opacity: 0;
 }
-.crystal > .cg-sweep {
-  top: 0; height: calc(var(--rim) + 2px); left: 29%; width: 42%; border-radius: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,.25) 55%, transparent);
-  -webkit-mask: linear-gradient(90deg, transparent, #000 42%, #000 58%, transparent);
-          mask: linear-gradient(90deg, transparent, #000 42%, #000 58%, transparent);
-  transform: translateX(var(--wx,0px)); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+.crystal:hover > .cg-spec { opacity: 1; }
+a.crystal:hover, button.crystal:hover { transform: translateY(-3px); background: linear-gradient(150deg, rgba(255,255,255,.66), rgba(255,255,255,.4)) !important; }
+
+/* Dark glass (hero panel over the video) */
+.crystal-dark {
+  background: linear-gradient(150deg, rgba(20,35,70,.50), rgba(10,25,55,.34)) !important;
+  border-color: rgba(255,255,255,.28) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(170%); backdrop-filter: blur(30px) saturate(170%);
 }
-.crystal > .cg-ring {
-  inset: 0; z-index: 1;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.75), inset 0 0 0 1px rgba(255,255,255,.35), inset 0 -1px 0 rgba(255,255,255,.18);
+.crystal-dark > .cg-lens { background: radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.22), transparent 55%); }
+.hero-overlay, html[dir="rtl"] .hero-overlay { background: linear-gradient(180deg, rgba(10,25,47,.25), rgba(10,25,47,.35)); }
+.stat-tile { background: linear-gradient(150deg, rgba(255,255,255,.72), rgba(255,255,255,.5)) !important; }
+
+/* Floating glass menu bar */
+nav.site-header {
+  top: 10px; left: 50%; transform: translateX(-50%); width: min(1320px, calc(100% - 20px)) !important;
+  border-radius: 22px; background: rgba(255,255,255,.5);
+  -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid rgba(255,255,255,.7); border-bottom: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 1px 1px rgba(255,255,255,.7) inset, 0 12px 32px -14px rgba(20,40,90,.35);
 }
-a.crystal:hover, button.crystal:hover { transform: translateY(-3px) scale(1.006); }
+nav.site-header::after { display: none; }
+#mobile-menu {
+  top: calc(100% + 8px); border-radius: 22px; background: rgba(255,255,255,.62) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid rgba(255,255,255,.7); box-shadow: 0 20px 40px -18px rgba(20,40,90,.35);
+}
+/* Language switch: glass segmented control */
+nav.site-header [role="group"] { background: rgba(255,255,255,.35) !important; border: 1px solid rgba(255,255,255,.7) !important; box-shadow: inset 0 1px 2px rgba(20,40,90,.08); }
 
-/* Dark crystal (hero text panel over the video) */
-.crystal-dark { --tint: rgba(10,25,47,.38); }
-.crystal-dark > .cg-ring { box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 0 0 1px rgba(255,255,255,.18); }
-.crystal-dark > .cg-spec { mix-blend-mode: plus-lighter; opacity: .5; }
+/* Buttons: jelly glass */
+.bg-whatsapp {
+  background: linear-gradient(180deg, #1c9a50 0%, #15803D 55%, #12703a 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -1px 0 rgba(0,0,0,.12), 0 8px 20px -8px rgba(21,128,61,.6) !important;
+  border: 1px solid rgba(255,255,255,.18);
+}
+.bg-whatsapp:hover { background: linear-gradient(180deg, #188b48, #12703a) !important; }
+a.border-slate-300, a.border-\[1\.5px\] {
+  background: rgba(255,255,255,.5) !important; border-color: rgba(255,255,255,.85) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 6px 16px -10px rgba(20,40,90,.3);
+}
+a.border-slate-300:hover { background: rgba(255,255,255,.72) !important; }
+#home a.border-white\/60 { background: rgba(255,255,255,.16) !important; border-color: rgba(255,255,255,.5) !important; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 
-/* Stats over the video: slightly more solid so numbers stay crisp */
-.stat-tile.crystal { --tint: rgba(255,255,255,.72); }
-
-/* Header: crystal edge */
-.site-header { box-shadow: inset 0 -1px 0 rgba(255,255,255,.6), 0 1px 0 rgba(15,23,42,.06); }
-.site-header::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgba(103,232,249,.7) 30%, rgba(244,114,182,.5) 70%, transparent);
+/* Phone booking bar: floating glass */
+#mobile-cta {
+  left: 8px !important; right: 8px !important; bottom: 8px !important; border-radius: 22px;
+  background: rgba(255,255,255,.55) !important; border: 1px solid rgba(255,255,255,.75) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%);
+  box-shadow: 0 1px 1px rgba(255,255,255,.7) inset, 0 16px 36px -14px rgba(20,40,90,.4) !important;
 }
 
-/* Phones and touch screens: lighter glass (no refraction layer) for smooth scrolling */
+/* Footer: glass */
+footer.footer-glass { color: #334155; }
+
+/* Section fade under the video: into the wallpaper */
+#home + * , .to-\[\#f4f9fd\] { --tw-gradient-to: transparent !important; }
+
+/* Phones: lighter blur so scrolling stays smooth */
 @media (hover: none), (max-width: 767px) {
-  .crystal { --rim: 6px; }
-  .crystal > .cg-rim { -webkit-backdrop-filter: none; backdrop-filter: none !important; background: rgba(255,255,255,.28); }
-  .crystal > .cg-spec, .crystal > .cg-sweep { display: none; }
+  :root { --glass-blur: blur(18px) saturate(170%); }
+  .crystal > .cg-spec { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .crystal, .crystal > .cg { transition: none; } a.crystal:hover { transform: none; } }
-
-/* fixes */
-.crystal > .cg { margin: 0 !important; }
-.crystal > .cg-spec { transform: translate(calc(var(--sx,0px) - 140px), calc(var(--sy,0px) - 140px)); }
-.crystal > .cg-chroma { background: linear-gradient(125deg, rgba(103,232,249,.48) 0%, transparent 36%, transparent 64%, rgba(244,114,182,.34) 100%); }
-main > section.page-head { padding-top: calc(72px + clamp(36px, 4.5vw, 72px)) !important; padding-bottom: 28px !important; }
-main > section.page-head + section { padding-top: 8px !important; }
+@media (prefers-reduced-motion: reduce) { .crystal { transition: none; } a.crystal:hover { transform: none; } }
