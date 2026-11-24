@@ -439,6 +439,18 @@
   window.crystalizeAll = crystalizeAll;
 
 
+  // ---------- Service photos: use services/<slug>.jpg when it exists ----------
+  function serviceCovers() {
+    document.querySelectorAll('.svc-cover[data-photo]').forEach(function (box) {
+      var src = box.getAttribute('data-photo');
+      probe(src).then(function (ok) {
+        if (!ok) return;
+        var img = document.createElement('img'); img.src = src; img.alt = ''; img.loading = 'lazy';
+        box.insertBefore(img, box.firstChild); box.classList.add('has-photo');
+      });
+    });
+  }
+
   // ---------- Start ----------
   document.querySelectorAll('img').forEach(fallback);
   var saved = 'ar';
@@ -452,6 +464,7 @@
   initMenu();
   initCards();
   initMobileCta();
+  serviceCovers();
 
   // Background video: pause when scrolled out of view (saves battery and data)
   var v = document.getElementById('bg-video');

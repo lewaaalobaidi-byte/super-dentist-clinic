@@ -152,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -164,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=19"></script>
+<script src="site.js?v=20"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -208,13 +208,29 @@ def build_home():
   </div>
 </a>'''
 
+    COVERS = {
+        "hollywood-smile": ("fa-face-smile-beam", "#2563EB", "#7DD3FC"),
+        "dental-implants": ("fa-tooth", "#0E7490", "#5EEAD4"),
+        "cosmetic-dentistry": ("fa-wand-magic-sparkles", "#7C3AED", "#F0ABFC"),
+        "orthodontics": ("fa-teeth", "#1D4ED8", "#A5B4FC"),
+        "root-canal": ("fa-teeth-open", "#0F766E", "#99F6E4"),
+        "pediatric-dentistry": ("fa-child-reaching", "#EA580C", "#FDE68A"),
+        "laser-whitening": ("fa-sun", "#0284C7", "#E0F2FE"),
+    }
     services = ""
-    for i, s in enumerate(SERVICES):
-        span = " lg:col-span-2" if i == len(SERVICES) - 1 else ""
+    for s in SERVICES:
+        icon, c1, c2 = COVERS[s["slug"]]
         services += f'''
-<a href="{s["slug"]}.html" class="glass-panel p-5 md:p-6 rounded-2xl md:rounded-3xl hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-center items-center text-center gap-2 bg-white/70 hover:bg-white/90{span}">
-  <h3 class="text-lg md:text-xl font-semibold text-navyBlue">{tt(s["title"])}</h3>
-  <span class="text-sm font-bold text-deepBlue">{t("اعرف المزيد", "Learn more", "زیاتر بزانە")}</span>
+<a href="{s["slug"]}.html" class="svc-card glass-panel group flex flex-col !p-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+  <div class="svc-cover relative aspect-[16/10] overflow-hidden rounded-t-[23px]" style="--c1:{c1};--c2:{c2}" data-photo="services/{s["slug"]}.jpg">
+    <span class="svc-orb svc-orb-1"></span><span class="svc-orb svc-orb-2"></span>
+    <span class="svc-icon"><i class="fa-solid {icon}" aria-hidden="true"></i></span>
+  </div>
+  <div class="p-5 md:p-6 flex flex-col gap-2 flex-1">
+    <h3 class="text-lg md:text-xl font-semibold text-navyBlue">{tt(s["title"])}</h3>
+    <p class="text-slate-600 text-[15px] leading-relaxed line-clamp-2">{tt(s["intro"])}</p>
+    <span class="mt-auto pt-2 text-sm font-semibold text-deepBlue">{t("اعرف المزيد ←", "Learn more →", "زیاتر بزانە ←")}</span>
+  </div>
 </a>'''
 
     jsonld = {
@@ -308,7 +324,7 @@ window.REVIEWS = [
 <section id="services" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <h2 class="text-center mb-8 md:mb-12 t-h2 font-bold text-navyBlue">{t('خدمات <span class="text-deepBlue">العيادة</span>', 'Clinic <span class="text-deepBlue">Services</span>', 'خزمەتگوزارییەکانی <span class="text-deepBlue">کلینیک</span>')}</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">{services}</div>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">{services}</div>
   </div>
 </section>
 
