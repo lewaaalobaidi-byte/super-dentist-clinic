@@ -269,3 +269,23 @@ footer.footer-glass { color: #334155; }
 .crystal-dark > .cg-lens { background: linear-gradient(to bottom, rgba(255,255,255,.10), transparent 40%); }
 .crystal-dark > .cg-spec { display: none; }
 .crystal-dark h1, .crystal-dark p, .crystal-dark > span { text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(5,15,35,.45); }
+
+/* Hero panel: no blur, no border (text sits on the video with a soft shadow) */
+.crystal-dark {
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  border: 0 !important; box-shadow: none !important;
+}
+.crystal-dark > .cg-lens { display: none; }
+
+/* Stats tiles: same clear glass the hero panel had */
+.stat-tile, .stat-tile.crystal {
+  background: linear-gradient(150deg, rgba(15,30,60,.22), rgba(10,25,55,.12)) !important;
+  -webkit-backdrop-filter: blur(5px) saturate(140%) !important; backdrop-filter: blur(5px) saturate(140%) !important;
+  border: 1px solid rgba(255,255,255,.35) !important;
+  box-shadow: 0 10px 30px -18px rgba(5,15,35,.45) !important;
+}
+.stat-tile > .cg-lens { background: linear-gradient(to bottom, rgba(255,255,255,.10), transparent 40%); }
+.stat-tile > .cg-spec { display: none; }
+.stat-tile span { color: #fff !important; text-shadow: 0 1px 2px rgba(0,0,0,.25), 0 2px 18px rgba(5,15,35,.45); }
+.stat-tile .text-yellow-500 { color: #FACC15 !important; }
+.video-fade { -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }
