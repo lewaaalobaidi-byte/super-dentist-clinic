@@ -109,15 +109,8 @@ FOOTER = f'''
 
 def page(filename, titles, desc, body, active="", video=False, head_extra="", scripts=""):
     if video:
-        bg = '''
-<div class="fixed inset-0 w-full h-full z-[0] pointer-events-none bg-slate-100">
-  <!-- poster = still image shown while the video loads. Export one frame of the video as clinic-bg-poster.jpg -->
-  <video id="bg-video" autoplay loop muted playsinline preload="metadata" poster="clinic-bg-poster.jpg" class="bg-video w-full h-full object-cover">
-    <source src="clinic-doctors-bg.mp4" type="video/mp4">
-  </video>
-  <div class="absolute inset-0 bg-white/30"></div>
-</div>'''
-        body_cls = "bg-transparent"
+        bg = ""
+        body_cls = "bg-[#f4f9fd]"
     else:
         bg = ""
         body_cls = "bg-gradient-to-b from-sky-50 via-white to-sky-50"
@@ -141,7 +134,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 {head_extra}
 </head>
 <body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -152,7 +145,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 </main>
 {FOOTER}
 {scripts}
-<script src="site.js?v=3"></script>
+<script src="site.js?v=4"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -233,6 +226,15 @@ window.REVIEWS = [
 </script>'''
 
     body = f'''
+<!-- Video background: only behind the hero + stats -->
+<div class="relative overflow-hidden">
+  <div class="absolute inset-0 z-0 pointer-events-none bg-slate-200" aria-hidden="true">
+    <video id="bg-video" autoplay loop muted playsinline preload="metadata" poster="clinic-bg-poster.jpg" class="bg-video w-full h-full object-cover">
+      <source src="clinic-doctors-bg.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-white/30"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#f4f9fd]"></div>
+  </div>
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 pt-24">
     <div class="space-y-4 md:space-y-6 max-w-2xl bg-white/30 p-6 md:p-8 rounded-3xl backdrop-blur-md border border-white/40 shadow-glass">
@@ -250,7 +252,7 @@ window.REVIEWS = [
 </section>
 
 <!-- Stats. TODO: confirm these numbers with the clinic -->
-<section id="stats" class="py-8 md:py-12 relative z-10">
+<section id="stats" class="pt-8 pb-16 md:pt-12 md:pb-24 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
     <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">5000<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("علاج ناجح", "Successful Treatments", "چارەسەری سەرکەوتوو")}</span></div>
     <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">4782<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("مريض سعيد", "Happy Patients", "نەخۆشی دڵخۆش")}</span></div>
@@ -258,6 +260,8 @@ window.REVIEWS = [
     <div class="glass-panel p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center bg-white/60"><span class="text-3xl md:text-5xl font-black text-deepBlue" dir="ltr">35<span class="text-xl md:text-2xl">+</span></span><span class="text-navyBlue font-bold text-sm md:text-lg mt-2">{t("سنوات الخبرة", "Years of Experience", "ساڵانی ئەزموون")}</span></div>
   </div>
 </section>
+
+</div>
 
 <section id="specialists" class="py-12 md:py-16 relative z-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">

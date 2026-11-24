@@ -250,8 +250,20 @@
   initMenu();
   initCards();
 
+  // Background video: pause when scrolled out of view (saves battery and data)
   var v = document.getElementById('bg-video');
-  if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) v.pause();
+  if (v) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.pause();
+    } else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }).observe(v);
+    }
+  }
 
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
