@@ -102,9 +102,7 @@ FOOTER = f'''
       <div class="space-y-4">
         <h3 class="text-sm font-semibold text-white">{t("تواصل معنا", "Contact", "پەیوەندی")}</h3>
         <p class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-[#7DD3FC] mt-1" aria-hidden="true"></i><span>{t("أربيل - شارع 120م - لالاف سيتي فيو", "Erbil - 120m Street - Lalav City View", "هەولێر - شەقامی 120م - لالاف ستی ڤیو")}<br><a href="https://www.google.com/maps/dir/?api=1&destination=Super+Dentist+Clinic+Erbil" target="_blank" rel="noopener" class="text-[#7DD3FC] hover:underline text-sm">{t("الاتجاهات", "Get directions", "ڕێنمایی ڕێگا")}</a></span></p>
-        <!-- TODO opening hours: fill in, then remove the comment markers
-        <p class="flex items-start gap-3"><i class="fa-regular fa-clock text-[#7DD3FC] mt-1" aria-hidden="true"></i><span>{t("السبت - الخميس: ...", "Sat - Thu: ...", "شەممە - پێنجشەممە: ...")}</span></p>
-        -->
+        <p class="flex items-start gap-3"><i class="fa-regular fa-clock text-[#7DD3FC] mt-1" aria-hidden="true"></i><span>{t("مفتوح 24 ساعة، طوال أيام الأسبوع", "Open 24 hours, 7 days a week", "24 کاتژمێر کراوەیە، هەموو ڕۆژانی هەفتە")}<br><span class="text-sm text-slate-400">{t("بما في ذلك حالات الطوارئ", "Including emergencies", "لەگەڵ حاڵەتە فریاکەوتنەکان")}</span></span></p>
         <div class="flex items-center gap-3" dir="ltr">
           <i class="fa-solid fa-phone text-[#7DD3FC]" aria-hidden="true"></i>
           <a href="tel:+{WA1}" dir="ltr" class="tracking-wide text-white hover:underline">+964 750 722 7500</a>
@@ -154,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -166,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=11"></script>
+<script src="site.js?v=12"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -228,9 +226,10 @@ def build_home():
                     "addressLocality": "Erbil", "addressCountry": "IQ"},
         "medicalSpecialty": ["Orthodontic", "CosmeticDentistry"],
         "availableLanguage": ["ar", "en", "ku"],
+        "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59"}],
     }
     head = ('<script type="application/ld+json">' + json.dumps(jsonld, ensure_ascii=False) + '</script>\n'
-            '<!-- TODO: add "openingHours": ["Sa-Th 10:00-21:00"] (real hours) to the JSON above -->')
+            '')
 
     reviews_script = '''
 <script>
@@ -272,6 +271,7 @@ window.REVIEWS = [
 <section id="home" class="relative min-h-[600px] md:min-h-[min(78svh,720px)] flex items-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 pt-24">
     <div class="space-y-5 md:space-y-6 max-w-2xl py-10">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/12 border border-white/30 text-white text-sm font-semibold"><span class="relative flex w-2.5 h-2.5"><span class="absolute inset-0 rounded-full bg-[#4ADE80] animate-ping opacity-60"></span><span class="relative w-2.5 h-2.5 rounded-full bg-[#4ADE80]"></span></span>{t("مفتوح 24/7، حتى للطوارئ", "Open 24/7, including emergencies", "24/7 کراوەیە، بۆ فریاکەوتنیش")}</span>
       <h1 class="t-display font-bold text-white">
         {t("ابتسامتك،", "Your Smile,", "خەندەکەت،", block=True)}
         <span class="text-[#7DD3FC]">{t("شغفنا.", "Our Passion.", "خولیای ئێمەیە.")}</span>
