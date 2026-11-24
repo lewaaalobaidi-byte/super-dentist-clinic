@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-title-ar="جولة في العيادة | عيادة سوبر دينتست" data-title-en="Clinic Tour | Super Dentist Clinic" data-title-ku="گەشتی کلینیک | کلینیکی سوپەر دێنتست">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جولة في العيادة | عيادة سوبر دينتست</title>
+<meta name="description" content="جولة مصورة داخل عيادة سوبر دينتست في أربيل: الاستقبال، غرف العلاج، التعقيم والتجهيزات الحديثة.">
+<meta name="theme-color" content="#1a365d">
+<link rel="icon" href="super-dentist-logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="جولة في العيادة | عيادة سوبر دينتست">
+<meta property="og:description" content="جولة مصورة داخل عيادة سوبر دينتست في أربيل: الاستقبال، غرف العلاج، التعقيم والتجهيزات الحديثة.">
+<!-- TODO: og:image needs a full URL once you have a domain, e.g. https://YOUR-DOMAIN/super-dentist-logo.jpg -->
+<meta property="og:image" content="super-dentist-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased relative selection:bg-navyBlue selection:text-white font-sans bg-gradient-to-b from-sky-50 via-white to-sky-50">
+
+
+<nav class="fixed w-full z-50 glass-panel bg-white/60 border-b-0">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center relative gap-4">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <img src="super-dentist-logo.jpg" alt="Super Dentist Clinic logo" width="48" height="48" class="w-10 h-10 md:w-12 md:h-12 rounded-xl object-cover shadow-glass bg-white">
+      <span class="text-lg md:text-xl font-extrabold text-navyBlue tracking-tight leading-none text-glow"><span class="lang-text lang-ar">عيادة سوبر دينتست</span><span class="lang-text lang-en">Super Dentist</span><span class="lang-text lang-ku">کلینیکی سوپەر دێنتست</span></span>
+    </a>
+    <div class="hidden xl:flex items-center gap-5 font-bold text-navyBlue text-[15px]"><a href="index.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">الرئيسية</span><span class="lang-text lang-en">Home</span><span class="lang-text lang-ku">سەرەکی</span></a>
+<a href="index.html#services" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">الخدمات</span><span class="lang-text lang-en">Services</span><span class="lang-text lang-ku">خزمەتگوزارییەکان</span></a>
+<a href="doctors.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">أطباؤنا</span><span class="lang-text lang-en">Doctors</span><span class="lang-text lang-ku">پزیشکەکانمان</span></a>
+<a href="gallery.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">قبل وبعد</span><span class="lang-text lang-en">Before & After</span><span class="lang-text lang-ku">پێش و دوای</span></a>
+<a href="tour.html" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow text-deepBlue"><span class="lang-text lang-ar">جولة في العيادة</span><span class="lang-text lang-en">Clinic Tour</span><span class="lang-text lang-ku">گەشتی کلینیک</span></a>
+<a href="index.html#reviews" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">آراء المرضى</span><span class="lang-text lang-en">Reviews</span><span class="lang-text lang-ku">بۆچوونەکان</span></a>
+<a href="#contact" class="whitespace-nowrap hover:text-deepBlue transition-colors subtext-glow"><span class="lang-text lang-ar">تواصل معنا</span><span class="lang-text lang-en">Contact</span><span class="lang-text lang-ku">پەیوەندی</span></a></div>
+    <div class="flex items-center gap-3 shrink-0">
+      <div class="flex bg-white/60 rounded-full p-1 border border-white/60 shadow-sm" role="group" aria-label="Language">
+        <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">AR</button>
+        <button type="button" onclick="changeLang('en')" id="btn-en" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">EN</button>
+        <button type="button" onclick="changeLang('ku')" id="btn-ku" class="px-2 md:px-3 py-1 text-xs font-bold rounded-full transition-colors">KU</button>
+      </div>
+      <button type="button" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu" class="xl:hidden p-2 text-navyBlue">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" class="wa-link hidden xl:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow">
+        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span class="lang-text lang-ar">احجز عبر واتساب</span><span class="lang-text lang-en">Book via WhatsApp</span><span class="lang-text lang-ku">نۆرە بگرە لە واتسئاپ</span>
+      </a>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden xl:hidden absolute top-full left-0 w-full shadow-lg py-4 px-6 flex flex-col gap-2 text-center font-bold text-navyBlue rounded-b-2xl bg-white/95">
+    <a href="index.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">الرئيسية</span><span class="lang-text lang-en">Home</span><span class="lang-text lang-ku">سەرەکی</span></a>
+<a href="index.html#services" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">الخدمات</span><span class="lang-text lang-en">Services</span><span class="lang-text lang-ku">خزمەتگوزارییەکان</span></a>
+<a href="doctors.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">أطباؤنا</span><span class="lang-text lang-en">Doctors</span><span class="lang-text lang-ku">پزیشکەکانمان</span></a>
+<a href="gallery.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">قبل وبعد</span><span class="lang-text lang-en">Before & After</span><span class="lang-text lang-ku">پێش و دوای</span></a>
+<a href="tour.html" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">جولة في العيادة</span><span class="lang-text lang-en">Clinic Tour</span><span class="lang-text lang-ku">گەشتی کلینیک</span></a>
+<a href="index.html#reviews" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">آراء المرضى</span><span class="lang-text lang-en">Reviews</span><span class="lang-text lang-ku">بۆچوونەکان</span></a>
+<a href="#contact" class="py-2 border-b border-navyBlue/10 hover:text-deepBlue"><span class="lang-text lang-ar">تواصل معنا</span><span class="lang-text lang-en">Contact</span><span class="lang-text lang-ku">پەیوەندی</span></a>
+    <div class="flex justify-center gap-6 mt-2">
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" class="wa-link py-2 text-whatsapp flex items-center gap-2"><i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i><span class="lang-text lang-ar">واتساب</span><span class="lang-text lang-en">WhatsApp</span><span class="lang-text lang-ku">واتسئاپ</span></a>
+      <a href="tel:+9647507227500" dir="ltr" class="py-2 text-deepBlue flex items-center gap-2"><i class="fa-solid fa-phone text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">اتصل</span><span class="lang-text lang-en">Call</span><span class="lang-text lang-ku">پەیوەندی</span></a>
+    </div>
+  </div>
+</nav>
+<main>
+
+<section class="pt-32 pb-8 md:pt-36 md:pb-10">
+  <div class="max-w-5xl mx-auto px-4 md:px-6 text-center space-y-4">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-navyBlue"><span class="lang-text lang-ar">جولة في <span class="text-deepBlue">العيادة</span></span><span class="lang-text lang-en">Clinic <span class="text-deepBlue">Tour</span></span><span class="lang-text lang-ku">گەشتێک بە <span class="text-deepBlue">کلینیکدا</span></span></h1>
+    <p class="text-lg md:text-xl text-navyBlue/80 font-semibold max-w-3xl mx-auto leading-relaxed"><span class="lang-text lang-ar">بيئة نظيفة ومريحة وتجهيزات حديثة. تعرّف على عيادتنا قبل زيارتك.</span><span class="lang-text lang-en">A clean, comfortable space with modern equipment. Take a look before your visit.</span><span class="lang-text lang-ku">شوێنێکی پاک و ئاسوودە و ئامێری مۆدێرن. پێش سەردانەکەت سەیرێکی بکە.</span></p>
+  </div>
+</section>
+<section class="pb-12">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
+    <!-- OPTIONAL tour video: put clinic-tour.mp4 next to this page and remove the comment markers.
+    <div class="card rounded-[2rem] overflow-hidden">
+      <video controls playsinline preload="metadata" poster="tour/reception.jpg" class="w-full">
+        <source src="clinic-tour.mp4" type="video/mp4">
+      </video>
+    </div>
+    -->
+    <div id="tour-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div class="card rounded-[2rem] p-6 md:p-10 grid md:grid-cols-[auto_1fr] gap-6 items-center">
+      <i class="fa-solid fa-shield-virus text-5xl text-deepBlue" aria-hidden="true"></i>
+      <div>
+        <h2 class="text-xl md:text-2xl font-extrabold text-navyBlue mb-2"><span class="lang-text lang-ar">سلامتك أولاً</span><span class="lang-text lang-en">Your safety comes first</span><span class="lang-text lang-ku">سەلامەتی تۆ لە پێشەوەیە</span></h2>
+        <!-- TODO: ask the clinic to confirm this text matches their sterilization routine -->
+        <p class="font-semibold text-navyBlue/85 leading-relaxed"><span class="lang-text lang-ar">نعقّم جميع الأدوات بعد كل مريض ونستخدم المواد ذات الاستخدام الواحد حيثما أمكن.</span><span class="lang-text lang-en">All instruments are sterilized after every patient, and we use single-use materials wherever possible.</span><span class="lang-text lang-ku">هەموو ئامرازەکان دوای هەر نەخۆشێک بێگەرد دەکرێن و لە هەر شوێنێک بکرێت کەرەستەی یەکجار بەکارهاتوو بەکاردەهێنین.</span></p>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" dir="ltr" data-wa-ar="مرحباً، أود زيارة العيادة وحجز موعد" data-wa-en="Hello, I'd like to visit the clinic and book an appointment" data-wa-ku="سڵاو، دەمەوێت سەردانی کلینیک بکەم و نۆرە بگرم" class="wa-link inline-flex items-center justify-center gap-2 px-8 py-3 text-base font-bold text-white bg-whatsapp rounded-full hover:bg-whatsappDark transition-all shadow-lg hover:shadow-glow"><i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i><span class="lang-text lang-ar">احجز زيارتك</span><span class="lang-text lang-en">Book your visit</span><span class="lang-text lang-ku">سەردانەکەت تۆمار بکە</span></a>
+    </div>
+  </div>
+</section>
+<div id="lightbox" class="hidden fixed inset-0 z-[60] bg-black/85 items-center justify-center p-4 cursor-zoom-out">
+  <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-2xl">
+</div>
+</main>
+
+<footer id="contact" class="relative z-10 mt-8 md:mt-12 border-t border-white/60 bg-white/85 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-12 text-center space-y-8">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-navyBlue"><span class="lang-text lang-ar">عيادة سوبر دينتست</span><span class="lang-text lang-en">Super Dentist Clinic</span><span class="lang-text lang-ku">کلینیکی سوپەر دێنتست</span></h2>
+    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-16 text-base md:text-lg font-bold text-navyBlue/90">
+      <div class="flex flex-col items-center gap-2">
+        <i class="fa-solid fa-location-dot text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
+        <span><span class="lang-text lang-ar">أربيل - شارع 120م - لالاف سيتي فيو</span><span class="lang-text lang-en">Erbil - 120m Street - Lalav City View</span><span class="lang-text lang-ku">هەولێر - شەقامی 120م - لالاف ستی ڤیو</span></span>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Super+Dentist+Clinic+Erbil" target="_blank" rel="noopener" class="text-sm text-deepBlue underline"><span class="lang-text lang-ar">الاتجاهات</span><span class="lang-text lang-en">Get directions</span><span class="lang-text lang-ku">ڕێنمایی ڕێگا</span></a>
+      </div>
+      <!-- TODO opening hours: fill in, then remove the comment markers
+      <div class="flex flex-col items-center gap-2">
+        <i class="fa-regular fa-clock text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
+        <span><span class="lang-text lang-ar">السبت - الخميس: ...</span><span class="lang-text lang-en">Sat - Thu: ...</span><span class="lang-text lang-ku">شەممە - پێنجشەممە: ...</span></span>
+      </div>
+      -->
+      <div class="flex flex-col items-center gap-3">
+        <i class="fa-solid fa-phone text-deepBlue text-3xl mb-2" aria-hidden="true"></i>
+        <div class="flex items-center gap-3" dir="ltr">
+          <a href="tel:+9647507227500" class="tracking-wide text-xl hover:text-deepBlue">+964 750 722 7500</a>
+          <a href="https://wa.me/9647507227500" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link"><i class="fa-brands fa-whatsapp text-whatsapp text-2xl" aria-hidden="true"></i></a>
+        </div>
+        <div class="flex items-center gap-3" dir="ltr">
+          <a href="tel:+9647761212111" class="tracking-wide text-xl hover:text-deepBlue">+964 776 121 2111</a>
+          <a href="https://wa.me/9647761212111" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link"><i class="fa-brands fa-whatsapp text-whatsapp text-2xl" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <p class="pt-6 text-xs md:text-sm text-navyBlue/70 font-semibold border-t border-navyBlue/10 max-w-2xl mx-auto leading-relaxed">
+      &copy; <span id="year" dir="ltr">2026</span>
+      <span class="lang-text lang-ar">جميع الحقوق محفوظة لشركة وي سكيور We Secure للتصميم والاعلان وتكنولوجيا المعلومات | <span dir="ltr">07703060331</span></span><span class="lang-text lang-en">All rights reserved to We Secure for Design, Advertising &amp; IT | <span dir="ltr">07703060331</span></span><span class="lang-text lang-ku">هەموو مافێک پارێزراوە بۆ کۆمپانیای We Secure بۆ دیزاین و ڕیکلام و تەکنەلۆجیای زانیاری | <span dir="ltr">07703060331</span></span>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* =====================  CLINIC TOUR PHOTOS  =====================
+   Put the photos in a folder called "tour" next to this page and edit the list.
+   Add, remove or rename rooms freely (e.g. a kids' corner, if the clinic has one). */
+window.TOUR = [
+  { src: 'tour/reception.jpg',     caption: { ar: 'الاستقبال',        en: 'Reception',          ku: 'پێشوازی' } },
+  { src: 'tour/waiting-area.jpg',  caption: { ar: 'صالة الانتظار',    en: 'Waiting area',       ku: 'هۆڵی چاوەڕوانی' } },
+  { src: 'tour/treatment-room.jpg',caption: { ar: 'غرفة العلاج',      en: 'Treatment room',     ku: 'ژووری چارەسەر' } },
+  { src: 'tour/sterilization.jpg', caption: { ar: 'غرفة التعقيم',     en: 'Sterilization room', ku: 'ژووری پاککردنەوە و بێگەردکردن' } },
+  { src: 'tour/xray.jpg',          caption: { ar: 'الأشعة الرقمية',   en: 'Digital X-ray',      ku: 'تیشکی دیجیتاڵ' } },
+  { src: 'tour/equipment.jpg',     caption: { ar: 'أحدث التجهيزات',   en: 'Modern equipment',   ku: 'نوێترین ئامێرەکان' } }
+];
+</script>
+<script src="site.js"></script>
+<!-- AI Assistant Chat Widget -->
+<script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
+</body>
+</html>
