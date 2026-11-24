@@ -327,7 +327,7 @@ window.REVIEWS = [
 
     <!-- Live Google reviews from Trustindex (replaces the manual list below while it loads correctly) -->
     <div id="ti-widget" class="min-h-[1px]">
-      <script defer async src="https://cdn.trustindex.io/loader.js?d15fb5886a5b51997916bb00058"></script>
+      <script defer async src="https://cdn.trustindex.io/loader.js?2119ee586e95519c9796397d2c3"></script>
     </div>
 
     <!-- Backup: the manual reviews below show only if the Trustindex widget does not load -->
