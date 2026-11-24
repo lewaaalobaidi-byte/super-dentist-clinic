@@ -339,3 +339,10 @@ html[dir="rtl"] #reviews::after {
               linear-gradient(180deg, rgba(255,255,255,.08), rgba(10,40,80,.12));
 }
 #reviews h2 { color: #0A2540 !important; }
+
+/* Reviews: dark tooth background */
+#reviews::before { background: #020c24 url(reviews-bg.jpg?v=2) right center / cover no-repeat; }
+#reviews::after, html[dir="rtl"] #reviews::after { background: linear-gradient(180deg, rgba(2,12,36,.15), rgba(2,12,36,.25)); }
+#reviews h2 { color: #fff !important; }
+#reviews h2 .text-deepBlue { color: #7DD3FC !important; }
+#reviews .crystal, #reviews .card { background: linear-gradient(150deg, rgba(255,255,255,.90), rgba(255,255,255,.78)) !important; }
