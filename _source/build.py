@@ -152,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=14">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -164,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=12"></script>
+<script src="site.js?v=14"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -183,7 +183,7 @@ def wa_btn(text_ar, text_en, text_ku, label, cls="px-8 py-3 text-base"):
 
 def page_header(title_html, sub_html=""):
     return f'''
-<section class="pt-32 pb-8 md:pt-36 md:pb-10">
+<section class="page-head">
   <div class="max-w-5xl mx-auto px-4 md:px-6 text-center space-y-4">
     <h1 class="t-h1 font-bold text-navyBlue">{title_html}</h1>
     {f'<p class="t-lead text-slate-600 max-w-[60ch] mx-auto">{sub_html}</p>' if sub_html else ''}
@@ -271,7 +271,7 @@ window.REVIEWS = [
   </div>
 <section id="home" class="relative min-h-[600px] md:min-h-[min(78svh,720px)] flex items-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10 pt-24">
-    <div class="space-y-5 md:space-y-6 max-w-2xl py-10">
+    <div class="crystal-panel crystal-dark space-y-5 md:space-y-6 max-w-2xl p-7 md:p-11">
       <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/12 border border-white/30 text-white text-sm font-semibold"><span class="relative flex w-2.5 h-2.5"><span class="absolute inset-0 rounded-full bg-[#4ADE80] animate-ping opacity-60"></span><span class="relative w-2.5 h-2.5 rounded-full bg-[#4ADE80]"></span></span>{t("مفتوح 24/7، حتى للطوارئ", "Open 24/7, including emergencies", "24/7 کراوەیە، بۆ فریاکەوتنیش")}</span>
       <h1 class="t-display font-bold text-white">
         {t("ابتسامتك،", "Your Smile,", "خەندەکەت،", block=True)}
