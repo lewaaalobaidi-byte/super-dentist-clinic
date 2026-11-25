@@ -373,3 +373,8 @@ body::before {
 #reviews::after { -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%); }
 /* light-section accents in the same blue family */
 .t-h2 .text-deepBlue, h2 .text-deepBlue { color: #1d6fd6; }
+
+/* service card descriptions: 2 lines max in every language */
+html[lang="ar"] .svc-card p > .lang-ar, html[lang="en"] .svc-card p > .lang-en, html[lang="ku"] .svc-card p > .lang-ku {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
