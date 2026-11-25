@@ -498,6 +498,32 @@
     if (!reduce) requestAnimationFrame(loop);
   }
 
+
+  // ---------- Blue Silk background video (MotionSites, free) behind every page; aurora is the fallback ----------
+  var SILK_REMOTE = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260815_034306_165449ef-7d2e-4e81-850f-1939c5cb442d.mp4';
+  function initBackground() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    if (reduce || save) { initAurora(); return; }
+    var v = document.createElement('video');
+    v.id = 'silk-bg'; v.setAttribute('aria-hidden', 'true');
+    v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.preload = 'auto';
+    var done = false;
+    function fallback() { if (done) return; done = true; v.remove(); initAurora(); }
+    // Local copy first (blue-silk.mp4 in the site root, if uploaded), then the MotionSites file
+    ['blue-silk.mp4', SILK_REMOTE].forEach(function (src, i, arr) {
+      var so = document.createElement('source'); so.src = src; so.type = 'video/mp4';
+      if (i === arr.length - 1) so.addEventListener('error', fallback);
+      v.appendChild(so);
+    });
+    v.addEventListener('playing', function () { done = true; v.classList.add('on'); });
+    setTimeout(function () { if (!done && v.readyState < 2) fallback(); }, 9000);
+    document.body.insertBefore(v, document.body.firstChild);
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+    document.addEventListener('visibilitychange', function () { if (document.hidden) v.pause(); else v.play().catch(function () {}); });
+  }
+
   // ---------- Dental network (footer / Contact) ----------
   function initNetwork() {
     var host = document.getElementById('contact'); if (!host) return;
@@ -552,7 +578,7 @@
   initMenu();
   initCards();
   initMobileCta();
-  initAurora();
+  initBackground();
   initNetwork();
   serviceCovers();
 
