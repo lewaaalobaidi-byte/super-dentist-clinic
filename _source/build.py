@@ -43,7 +43,7 @@ def nav(active):
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
       <span class="text-[15px] sm:text-lg md:text-xl font-bold text-navyBlue tracking-tight leading-tight ">{t("عيادة سوبر دينتست", "Super Dentist Clinic", "کلینیکی سوپەر دێنتست")}</span>
     </a>
-    <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
+    <div class="hidden lg:flex items-center gap-4 xl:gap-7 2xl:gap-9 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
       <div class="flex bg-white/60 rounded-full p-1 border border-white/60 shadow-sm" role="group" aria-label="Language">
         <button type="button" onclick="changeLang('ar')" id="btn-ar" class="px-2.5 md:px-3 py-1.5 text-[13px] font-bold rounded-full transition-colors">AR</button>
@@ -148,7 +148,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=45">
+<link rel="stylesheet" href="styles.css?v=46">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -160,7 +160,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=45"></script>
+<script src="site.js?v=46"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
