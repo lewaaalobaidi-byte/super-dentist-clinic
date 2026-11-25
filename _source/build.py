@@ -80,7 +80,7 @@ MOBILE_CTA = f'''
 FOOTER = f'''
 <footer id="contact" class="footer-glass crystal-panel relative z-10 mt-8 mb-24 md:mb-4 mx-3 md:mx-auto max-w-[1320px] text-slate-700">
   <div class="max-w-7xl mx-auto px-4 md:px-6 pt-14 pb-8">
-    <div class="grid gap-10 md:grid-cols-[1.3fr_1fr_1.3fr]">
+    <div class="grid gap-10 md:grid-cols-[1fr_1.4fr_1fr] items-stretch">
       <div class="space-y-4">
         <a href="index.html" class="inline-flex items-center gap-3">
           <span class="logo-metal" style="width:56px;height:44px"><img src="super-dentist-logo.png" alt="" width="56" height="44" style="width:56px;height:44px;object-fit:contain" loading="lazy"></span>
@@ -88,17 +88,12 @@ FOOTER = f'''
         </a>
         <p class="text-slate-600 max-w-[36ch]">{t("رعاية أسنان متكاملة في أربيل، من التقويم والزراعة إلى تجميل الابتسامة.", "Complete dental care in Erbil, from orthodontics and implants to smile design.", "چاودێری تەواوی ددان لە هەولێر، لە ڕاستکردنەوە و چاندنەوە تا جوانکاری خەندە.")}</p>
       </div>
-      <nav aria-label="Footer">
-        <h3 class="text-sm font-semibold text-navyBlue mb-4">{t("الصفحات", "Pages", "پەڕەکان")}</h3>
-        <ul class="grid grid-cols-2 gap-x-6 gap-y-2.5 text-slate-700">
-          <li><a class="hover:text-[#0062D6]" href="index.html#services">{t("الخدمات", "Services", "خزمەتگوزارییەکان")}</a></li>
-          <li><a class="hover:text-[#0062D6]" href="doctors.html">{t("أطباؤنا", "Doctors", "پزیشکەکانمان")}</a></li>
-          <li><a class="hover:text-[#0062D6]" href="gallery.html">{t("قبل وبعد", "Before &amp; After", "پێش و دوای")}</a></li>
-          <li><a class="hover:text-[#0062D6]" href="tour.html">{t("جولة في العيادة", "Clinic Tour", "گەشتی کلینیک")}</a></li>
-          <li><a class="hover:text-[#0062D6]" href="index.html#reviews">{t("آراء المرضى", "Reviews", "بۆچوونەکان")}</a></li>
-          <li><a class="hover:text-[#0062D6]" href="hollywood-smile.html">{t("ابتسامة هوليود", "Hollywood Smile", "خەندەی هۆلیوود")}</a></li>
-        </ul>
-      </nav>
+      <div class="flex flex-col">
+        <!-- TODO: replace src with the official embed (Google Maps -> Share -> Embed a map) -->
+        <div class="flex-1 min-h-[240px] md:min-h-[280px] rounded-2xl overflow-hidden border border-white/20 shadow-[0_12px_30px_-14px_rgba(0,0,0,.5)]">
+          <iframe src="https://maps.google.com/maps?q=Super+dentists+clinic+Erbil&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Super Dentist Clinic location" width="100%" height="100%" style="border:0;min-height:240px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
       <div class="space-y-4">
         <h3 class="text-sm font-semibold text-navyBlue">{t("تواصل معنا", "Contact", "پەیوەندی")}</h3>
         <p class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-[#0062D6] mt-1" aria-hidden="true"></i><span>{t("أربيل - شارع 120م - لالاف سيتي فيو", "Erbil - 120m Street - Lalav City View", "هەولێر - شەقامی 120م - لالاف ستی ڤیو")}<br><a href="https://www.google.com/maps/dir/?api=1&destination=Super+Dentist+Clinic+Erbil" target="_blank" rel="noopener" class="text-[#0062D6] hover:underline text-sm">{t("الاتجاهات", "Get directions", "ڕێنمایی ڕێگا")}</a></span></p>
@@ -113,10 +108,7 @@ FOOTER = f'''
           <a href="tel:+{WA2}" dir="ltr" class="tracking-wide text-navyBlue hover:underline">+964 776 121 2111</a>
           <a href="https://wa.me/{WA2}" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa-link text-[#15803D] text-xl"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
         </div>
-        <!-- TODO: replace src with the official embed (Google Maps -> Share -> Embed a map) -->
-        <div class="mt-2 rounded-2xl overflow-hidden border border-white/70 shadow-[0_8px_24px_-12px_rgba(20,40,90,.35)] h-[170px]">
-          <iframe src="https://maps.google.com/maps?q=Super+dentists+clinic+Erbil&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Super Dentist Clinic location" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+
       </div>
     </div>
     <p class="mt-12 pt-6 border-t border-slate-900/10 text-sm text-slate-600 text-center leading-relaxed">
@@ -156,7 +148,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=41">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -168,7 +160,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=40"></script>
+<script src="site.js?v=41"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
