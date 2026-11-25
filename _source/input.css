@@ -537,3 +537,13 @@ footer.footer-glass {
   border: 1px solid rgba(125,211,252,.16) !important;
   box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset, 0 24px 50px -24px rgba(0,0,0,.6) !important;
 }
+
+/* Our Medical Team: no own colour, the page texture shows through */
+#specialists { background: transparent !important; }
+#specialists::before, #specialists::after { display: none !important; }
+
+/* Contact / footer: white text */
+footer.footer-glass, footer.footer-glass :is(p, span, li, div, h2, h3, h4, address, strong) { color: #fff !important; }
+footer.footer-glass a:not(.wa-link) { color: #fff !important; }
+footer.footer-glass a:not(.wa-link):hover { color: #9BE7FF !important; }
+footer.footer-glass .text-xs, footer.footer-glass small { color: rgba(255,255,255,.85) !important; }
