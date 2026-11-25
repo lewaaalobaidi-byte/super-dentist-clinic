@@ -510,12 +510,11 @@ body::before {
     linear-gradient(160deg, #dcbd8e 0%, #d6b687 50%, #cfae80 100%) !important;
 }
 
-/* Wallpaper v4: teal streak texture (static, no motion) */
-body { background: #046a8c !important; }
+/* Wallpaper v5: dark navy pinstripe (static, no motion) */
+body { background: #0b2238 !important; }
 body::before {
-  background: #046a8c url("bg-teal.jpg") center / cover no-repeat !important;
+  background: #0b2238 url("bg-navy.jpg") center top / cover no-repeat !important;
 }
-@media (max-width: 767px) { body::before { background-image: url("bg-teal-sm.jpg") !important; } }
 
 /* Text that sits straight on the teal texture: white headings, light accents */
 .page-head h1, .page-head p,
@@ -524,7 +523,10 @@ main > section:not(#specialists):not(#home) :is(h1, h2, .t-lead):not(:is(.card, 
 main > section:not(#specialists):not(#home) .t-lead:not(:is(.card, .crystal, .glass-panel, .svc-card, .stat-tile) *) { color: rgba(255,255,255,.86) !important; }
 .page-head h1 .text-deepBlue,
 main > section:not(#specialists):not(#home) h2:not(:is(.card, .crystal, .glass-panel, .svc-card, .stat-tile) *) .text-deepBlue { color: #9BE7FF !important; }
-.page-head h1, main > section:not(#specialists):not(#home) h2 { text-shadow: 0 2px 14px rgba(0, 40, 60, .35); }
+.page-head h1, main > section:not(#specialists):not(#home) h2:not(:is(.card, .crystal, .glass-panel, .svc-card, .stat-tile) *) { text-shadow: 0 2px 14px rgba(0, 20, 40, .45); }
 
 /* Glass cards a little whiter on the darker teal so their text stays crisp */
 .card, .svc-card, main .glass-panel { background: linear-gradient(150deg, rgba(255,255,255,.84), rgba(255,255,255,.66)) !important; }
+
+/* Glass panels outside the hero: same whiter glass as the cards so text stays readable on navy */
+main > section:not(#home) .crystal:not(.crystal-dark) { background: linear-gradient(150deg, rgba(255,255,255,.86), rgba(255,255,255,.70)) !important; }
