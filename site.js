@@ -631,8 +631,7 @@
   initMenu();
   initCards();
   initMobileCta();
-  initAurora();
-  initBubbles();
+
   initNetwork();
   serviceCovers();
 
