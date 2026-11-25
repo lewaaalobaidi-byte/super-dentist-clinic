@@ -499,29 +499,82 @@
   }
 
 
-  // ---------- Blue Silk background video (MotionSites, free) behind every page; aurora is the fallback ----------
-  var SILK_REMOTE = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260815_034306_165449ef-7d2e-4e81-850f-1939c5cb442d.mp4';
-  function initBackground() {
+  // ---------- Crystal bubbles: glass spheres drifting up over the aurora, behind every page ----------
+  function initBubbles() {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var save = navigator.connection && navigator.connection.saveData;
-    if (reduce || save) { initAurora(); return; }
-    var v = document.createElement('video');
-    v.id = 'silk-bg'; v.setAttribute('aria-hidden', 'true');
-    v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
-    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.preload = 'auto';
-    var done = false;
-    function fallback() { if (done) return; done = true; v.remove(); initAurora(); }
-    // Local copy first (blue-silk.mp4 in the site root, if uploaded), then the MotionSites file
-    ['blue-silk.mp4', SILK_REMOTE].forEach(function (src, i, arr) {
-      var so = document.createElement('source'); so.src = src; so.type = 'video/mp4';
-      if (i === arr.length - 1) so.addEventListener('error', fallback);
-      v.appendChild(so);
-    });
-    v.addEventListener('playing', function () { done = true; v.classList.add('on'); });
-    setTimeout(function () { if (!done && v.readyState < 2) fallback(); }, 9000);
-    document.body.insertBefore(v, document.body.firstChild);
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
-    document.addEventListener('visibilitychange', function () { if (document.hidden) v.pause(); else v.play().catch(function () {}); });
+    var c = document.createElement('canvas');
+    c.id = 'bubbles-bg'; c.setAttribute('aria-hidden', 'true');
+    var aur = document.getElementById('aurora-bg');
+    document.body.insertBefore(c, aur ? aur.nextSibling : document.body.firstChild);
+    var ctx = c.getContext('2d'); if (!ctx) return;
+    var dpr = Math.min(1.5, window.devicePixelRatio || 1), W, H;
+    // One glass-bubble sprite, scaled for every bubble
+    var S = 256, sp = document.createElement('canvas'); sp.width = sp.height = S;
+    var g = sp.getContext('2d'), r = S / 2 - 2;
+    var body = g.createRadialGradient(S / 2, S / 2, r * .55, S / 2, S / 2, r);
+    body.addColorStop(0, 'rgba(255,255,255,0.02)');
+    body.addColorStop(.78, 'rgba(186,220,255,0.16)');
+    body.addColorStop(.93, 'rgba(150,200,255,0.42)');
+    body.addColorStop(1, 'rgba(255,255,255,0.75)');
+    g.fillStyle = body; g.beginPath(); g.arc(S / 2, S / 2, r, 0, Math.PI * 2); g.fill();
+    // faint iridescent rim
+    var iri = g.createLinearGradient(0, 0, S, S);
+    iri.addColorStop(0, 'rgba(160,230,255,0.35)'); iri.addColorStop(.5, 'rgba(210,190,255,0.25)'); iri.addColorStop(1, 'rgba(140,255,230,0.3)');
+    g.lineWidth = 3; g.strokeStyle = iri; g.beginPath(); g.arc(S / 2, S / 2, r - 2, 0, Math.PI * 2); g.stroke();
+    // main specular highlight (top-left)
+    g.save(); g.translate(S * .34, S * .3); g.rotate(-0.7);
+    var hl = g.createRadialGradient(0, 0, 0, 0, 0, S * .17);
+    hl.addColorStop(0, 'rgba(255,255,255,0.95)'); hl.addColorStop(.45, 'rgba(255,255,255,0.45)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
+    g.scale(1, .55); g.fillStyle = hl; g.beginPath(); g.arc(0, 0, S * .17, 0, Math.PI * 2); g.fill(); g.restore();
+    // small reflected glint (bottom-right)
+    var gl = g.createRadialGradient(S * .7, S * .74, 0, S * .7, S * .74, S * .07);
+    gl.addColorStop(0, 'rgba(255,255,255,0.7)'); gl.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = gl; g.beginPath(); g.arc(S * .7, S * .74, S * .07, 0, Math.PI * 2); g.fill();
+
+    var bubbles = [], mx = -1e4, my = -1e4;
+    function make(anyY) {
+      var small = W < 768, rad = (small ? 10 : 14) + Math.pow(Math.random(), 1.8) * (small ? 42 : 70);
+      return { x: Math.random() * W, y: anyY ? Math.random() * H : H + rad + Math.random() * 80, r: rad,
+        vy: .12 + Math.random() * .28 + rad * .002, ph: Math.random() * 6.28, sw: .25 + Math.random() * .5,
+        a: .55 + Math.random() * .45, px: 0, py: 0 };
+    }
+    function size() {
+      W = innerWidth; H = innerHeight;
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = W < 768 ? 11 : 20;
+      while (bubbles.length < n) bubbles.push(make(true));
+      bubbles.length = n;
+    }
+    size(); addEventListener('resize', size);
+    addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < bubbles.length; i++) {
+        var b = bubbles[i], d = b.r * 2;
+        ctx.globalAlpha = b.a;
+        ctx.drawImage(sp, b.x + b.px - b.r, b.y + b.py - b.r, d, d);
+      }
+      ctx.globalAlpha = 1;
+    }
+    var last = 0;
+    function step(now) {
+      var dt = last ? Math.min(50, now - last) / 16.7 : 1; last = now;
+      if (!document.hidden) {
+        for (var i = 0; i < bubbles.length; i++) {
+          var b = bubbles[i];
+          b.y -= b.vy * dt; b.ph += .012 * dt; b.x += Math.sin(b.ph) * b.sw * .35 * dt;
+          // gently drift away from the pointer
+          var dx = b.x + b.px - mx, dy = b.y + b.py - my, dd = Math.sqrt(dx * dx + dy * dy), lim = b.r + 90;
+          if (dd < lim && dd > .1) { var f = (1 - dd / lim) * 2.2; b.px += dx / dd * f; b.py += dy / dd * f; }
+          b.px *= .96; b.py *= .96;
+          if (b.y < -b.r - 20) bubbles[i] = make(false);
+        }
+        draw();
+      }
+      requestAnimationFrame(step);
+    }
+    draw();
+    if (!reduce) requestAnimationFrame(step);
   }
 
   // ---------- Dental network (footer / Contact) ----------
@@ -578,7 +631,8 @@
   initMenu();
   initCards();
   initMobileCta();
-  initBackground();
+  initAurora();
+  initBubbles();
   initNetwork();
   serviceCovers();
 
