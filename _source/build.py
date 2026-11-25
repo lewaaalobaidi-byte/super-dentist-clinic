@@ -212,6 +212,7 @@ def build_home():
         "root-canal": ("fa-teeth-open", "#0F766E", "#99F6E4"),
         "pediatric-dentistry": ("fa-child-reaching", "#EA580C", "#FDE68A"),
         "laser-whitening": ("fa-sun", "#0284C7", "#E0F2FE"),
+        "xray-imaging": ("fa-x-ray", "#0B1D3A", "#7DD3FC"),
     }
     services = ""
     for s in SERVICES:
@@ -406,6 +407,17 @@ def build_services():
             for o in SERVICES if o["slug"] != s["slug"])
 
         ti = s["title"]
+        L = s.get("labels", {})
+        def head(key, ar, en, ku):
+            return tt(L[key]) if key in L else t(ar, en, ku)
+        types = ""
+        if s.get("types"):
+            cards = "".join(f'''<div class="card rounded-3xl p-6 md:p-7 flex flex-col gap-3">
+        <i class="fa-solid {ic} text-3xl text-deepBlue" aria-hidden="true"></i>
+        <h2 class="t-h3 font-semibold text-navyBlue">{tt(nm)}</h2>
+        <p class="font-normal text-slate-700 leading-relaxed">{tt(ds)}</p>
+      </div>''' for ic, nm, ds in s["types"])
+            types = f'<div class="grid md:grid-cols-3 gap-6">{cards}</div>'
         body = page_header(tt(ti), tt(s["intro"])) + f'''
 <section class="pb-10">
   <div class="max-w-5xl mx-auto px-4 md:px-6 space-y-6">
@@ -416,13 +428,14 @@ def build_services():
               t("احجز استشارة", "Book a consultation", "نۆرەی ڕاوێژ بگرە"))}
       {gallery_link}
     </div>
+    {types}
     <div class="grid md:grid-cols-2 gap-6">
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("لمن هذا العلاج؟", "Who is it for?", "ئەم چارەسەرە بۆ کێیە؟")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{head("who", "لمن هذا العلاج؟", "Who is it for?", "ئەم چارەسەرە بۆ کێیە؟")}</h2>
         <ul class="space-y-3">{li(s["who"])}</ul>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("خطوات العلاج", "How it works", "هەنگاوەکانی چارەسەر")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{head("steps", "خطوات العلاج", "How it works", "هەنگاوەکانی چارەسەر")}</h2>
         <ol class="space-y-3">{li(s["steps"], numbered=True)}</ol>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
@@ -430,7 +443,7 @@ def build_services():
         <p class="flex gap-3 items-start font-semibold text-slate-700"><i class="fa-regular fa-clock text-deepBlue mt-1" aria-hidden="true"></i>{tt(s["duration"])}</p>
       </div>
       <div class="card rounded-3xl p-6 md:p-8">
-        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{t("بعد العلاج", "Aftercare", "دوای چارەسەر")}</h2>
+        <h2 class="t-h3 font-semibold text-navyBlue mb-4">{head("after", "بعد العلاج", "Aftercare", "دوای چارەسەر")}</h2>
         <ul class="space-y-3">{li(s["after"])}</ul>
       </div>
     </div>

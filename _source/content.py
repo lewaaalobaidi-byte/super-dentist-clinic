@@ -212,6 +212,55 @@ SERVICES = [
             "ku": ["48 کاتژمێر چا، قاوە، خواردنی ڕەنگاوڕەنگ و جگەرە مەخۆ", "هەستیاری کاتی ئاساییە", "نوێکردنەوە بەپێی ئامۆژگاری پزیشک"],
         },
     },
+    {
+        "slug": "xray-imaging",
+        "gallery": None,
+        "title": {"ar": "الأشعة الرقمية: بانوراما و\u00a03D", "en": "Digital X-Ray: Panoramic &\u00a03D", "ku": "تیشکی دیجیتاڵ: پانۆراما و\u00a03D"},
+        "intro": {
+            "ar": "تشخيص دقيق يبدأ بصورة واضحة. في العيادة نوفّر الأشعة البانورامية لكامل الفم، والأشعة ثلاثية الأبعاد 3D، والأشعة العادية للسن الواحد — بأجهزة رقمية سريعة وجرعة إشعاع منخفضة، والنتيجة تظهر على الشاشة خلال دقائق.",
+            "en": "Accurate diagnosis starts with a clear picture. We offer panoramic X-rays of the whole mouth, 3D (CBCT) scans and regular single-tooth X-rays, using fast digital machines with a low radiation dose. Your images are on screen within minutes.",
+            "ku": "دەستنیشانکردنی ورد بە وێنەیەکی ڕوون دەست پێدەکات. لە کلینیک تیشکی پانۆرامی بۆ هەموو دەم، تیشکی سێ ڕەهەندی 3D و تیشکی ئاسایی بۆ یەک ددان دابین دەکەین — بە ئامێری دیجیتاڵی خێرا و دۆزی تیشکی کەم، و ئەنجامەکە لە چەند خولەکێکدا لەسەر شاشە دەردەکەوێت.",
+        },
+        "types": [
+            ("fa-teeth", {"ar": "الأشعة البانورامية", "en": "Panoramic X-ray", "ku": "تیشکی پانۆرامی"},
+             {"ar": "صورة واحدة تُظهر جميع الأسنان والفكين والجيوب الأنفية والمفصل الفكي. مثالية للفحص الشامل، وأسنان العقل، وتخطيط التقويم.",
+              "en": "One image showing all your teeth, both jaws, the sinuses and the jaw joints. Ideal for a full check-up, wisdom teeth and orthodontic planning.",
+              "ku": "یەک وێنە کە هەموو ددانەکان، هەردوو شەویلگە، سینەسەکان و جومگەی شەویلگە پیشان دەدات. گونجاوە بۆ پشکنینی گشتی، ددانی عەقڵ و پلانی ڕاستکردنەوەی ددان."}),
+            ("fa-cube", {"ar": "الأشعة ثلاثية الأبعاد 3D (CBCT)", "en": "3D X-ray (CBCT)", "ku": "تیشکی سێ ڕەهەندی 3D (CBCT)"},
+             {"ar": "تصوير مقطعي يُظهر العظم والأعصاب والجذور من كل الزوايا بدقة عالية، لتخطيط زراعة الأسنان بأمان وتشخيص الحالات المعقدة.",
+              "en": "A cone-beam scan that shows bone, nerves and roots from every angle in high detail, for safe implant planning and complex cases.",
+              "ku": "وێنەگرتنی بڕگەیی کە ئێسک، دەمار و ڕەگەکان لە هەموو گۆشەیەکەوە بە وردی پیشان دەدات، بۆ پلانی چاندنی ددان بە سەلامەتی و حاڵەتە ئاڵۆزەکان."}),
+            ("fa-tooth", {"ar": "الأشعة العادية (للسن الواحد)", "en": "Regular X-ray (single tooth)", "ku": "تیشکی ئاسایی (یەک ددان)"},
+             {"ar": "صورة صغيرة ومفصّلة لسن أو سنّين، تكشف التسوس المخفي والتهاب العصب، وتُستخدم أثناء علاج الجذور وبعده.",
+              "en": "A small, detailed image of one or two teeth that reveals hidden decay and nerve infection, used during and after root canal treatment.",
+              "ku": "وێنەیەکی بچووک و ورد بۆ یەک یان دوو ددان، کە کرمخواردنی شاراوە و هەوکردنی دەمار ئاشکرا دەکات، و لە کاتی چارەسەری ڕەگ و دواتر بەکاردێت."}),
+        ],
+        "labels": {
+            "who": {"ar": "متى تحتاج الأشعة؟", "en": "When do you need it?", "ku": "کەی پێویستت پێیەتی؟"},
+            "steps": {"ar": "كيف يتم التصوير؟", "en": "How it works", "ku": "وێنەگرتن چۆن دەکرێت؟"},
+            "after": {"ar": "معلومات مهمة", "en": "Good to know", "ku": "زانیاری گرنگ"},
+        },
+        "who": {
+            "ar": ["قبل زراعة الأسنان لقياس العظم والأعصاب بدقة", "تخطيط تقويم الأسنان وتقييم أسنان العقل", "ألم في السن أو تسوس لا يظهر بالعين", "فحص شامل للفكين والجيوب الأنفية والمفصل"],
+            "en": ["Before implants, to measure bone and nerves precisely", "Planning braces and checking wisdom teeth", "Toothache or decay you can't see", "A full check of the jaws, sinuses and jaw joint"],
+            "ku": ["پێش چاندنی ددان بۆ پێوانی وردی ئێسک و دەمار", "پلانی ڕاستکردنەوەی ددان و هەڵسەنگاندنی ددانی عەقڵ", "ئازاری ددان یان کرمخواردنێک کە بە چاو نابینرێت", "پشکنینی گشتی شەویلگە، سینەس و جومگە"],
+        },
+        "steps": {
+            "ar": ["يحدد الطبيب نوع الأشعة المناسب لحالتك", "إزالة الأشياء المعدنية مثل الأقراط والنظارات وطقم الأسنان المتحرك", "الثبات لبضع ثوانٍ أثناء دوران الجهاز حول الرأس", "تظهر الصور فوراً على الشاشة ويشرحها لك الطبيب"],
+            "en": ["Your dentist picks the right type of X-ray for you", "Remove metal items such as earrings, glasses and removable dentures", "Keep still for a few seconds while the machine moves around your head", "The images appear on screen and your dentist goes through them with you"],
+            "ku": ["پزیشک جۆری تیشکی گونجاو بۆ حاڵەتەکەت دیاری دەکات", "لابردنی شتە کانزاییەکان وەک گوارە، چاویلکە و ددانی دەستکردی لابراو", "بۆ چەند چرکەیەک جووڵە مەکە لە کاتی سووڕانەوەی ئامێرەکە بە دەوری سەردا", "وێنەکان یەکسەر لەسەر شاشە دەردەکەون و پزیشک بۆت ڕوون دەکاتەوە"],
+        },
+        "duration": {
+            "ar": "التصوير نفسه ثوانٍ معدودة، والزيارة كاملة نحو 10–15 دقيقة",
+            "en": "The scan itself takes seconds; the whole visit about 10–15 minutes",
+            "ku": "وێنەگرتنەکە خۆی چەند چرکەیەکە، و هەموو سەردانەکە نزیکەی 10–15 خولەک",
+        },
+        "after": {
+            "ar": ["لا يحتاج أي تحضير مسبق ولا راحة بعده", "أخبري الطبيب إذا كنتِ حاملاً أو تشكّين في الحمل", "يمكنك الحصول على نسخة رقمية من صورك"],
+            "en": ["No preparation needed and no recovery time", "Tell your dentist if you are or might be pregnant", "You can get a digital copy of your images"],
+            "ku": ["هیچ ئامادەکارییەکی پێشوەختە و پشوودانی دواتر پێویست نییە", "ئەگەر سکپڕیت یان گومانت هەیە، بە پزیشک بڵێ", "دەتوانیت کۆپییەکی دیجیتاڵی وێنەکانت وەربگریت"],
+        },
+    },
 ]
 
 DOCTORS = [
