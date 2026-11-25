@@ -451,3 +451,9 @@ html[lang="ar"] .svc-card p > .lang-ar, html[lang="en"] .svc-card p > .lang-en, 
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 110px, #000 100%) !important;
           mask-image: linear-gradient(180deg, transparent 0, #000 110px, #000 100%) !important;
 }
+
+/* No soft glows or fades anywhere in the dark sections */
+#specialists { background: #454A5F !important; }
+#teasers { background: #454A5F !important; }
+#reviews { background: #454A5F !important; }
+#reviews::before, #reviews::after { -webkit-mask-image: none !important; mask-image: none !important; }
