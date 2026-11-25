@@ -41,7 +41,7 @@ def nav(active):
   <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex justify-between items-center relative gap-2 md:gap-4">
     <a href="index.html" class="flex items-center gap-2 md:gap-3 min-w-0">
       <span class="logo-metal" style="width:54px;height:44px"><img src="super-dentist-logo.png" alt="Super Dentist Clinic logo" width="54" height="44" style="width:54px;height:44px;object-fit:contain"></span>
-      <span class="text-[15px] sm:text-lg md:text-xl font-bold text-navyBlue tracking-tight leading-tight ">{t("عيادة سوبر دينتست", "Super Dentist", "کلینیکی سوپەر دێنتست")}</span>
+      <span class="text-[15px] sm:text-lg md:text-xl font-bold text-navyBlue tracking-tight leading-tight ">{t("عيادة سوبر دينتست", "Super Dentist Clinic", "کلینیکی سوپەر دێنتست")}</span>
     </a>
     <div class="hidden lg:flex items-center gap-3 xl:gap-5 font-bold text-navyBlue text-[13.5px] xl:text-[15px]">{desk}</div>
     <div class="flex items-center gap-2 md:gap-3 shrink-0">
@@ -152,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=32">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -164,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=31"></script>
+<script src="site.js?v=32"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
