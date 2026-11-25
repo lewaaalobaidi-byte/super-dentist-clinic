@@ -457,3 +457,23 @@ html[lang="ar"] .svc-card p > .lang-ar, html[lang="en"] .svc-card p > .lang-en, 
 #teasers { background: #454A5F !important; }
 #reviews { background: #454A5F !important; }
 #reviews::before, #reviews::after { -webkit-mask-image: none !important; mask-image: none !important; }
+
+/* Aurora canvas: fixed behind everything (wallpaper stays underneath as fallback) */
+#aurora-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+
+/* Footer / Contact: dark slate with the dental network */
+footer.footer-glass {
+  background: #454A5F !important; border-color: rgba(255,255,255,.14) !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  box-shadow: 0 24px 50px -24px rgba(0,0,0,.45) !important; color: #cbd5e1;
+}
+footer.footer-glass > .cg-lens { display: none; }
+footer .net-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; border-radius: inherit; }
+footer.footer-glass > div { position: relative; z-index: 1; }
+footer.footer-glass .text-navyBlue { color: #fff !important; }
+footer.footer-glass .text-slate-700 { color: #cbd5e1 !important; }
+footer.footer-glass .text-slate-600 { color: #aab4c6 !important; }
+footer.footer-glass .text-\[\#0062D6\] { color: #7DD3FC !important; }
+footer.footer-glass .text-\[\#15803D\] { color: #4ADE80 !important; }
+footer.footer-glass .border-slate-900\/10 { border-color: rgba(255,255,255,.12) !important; }
+footer.footer-glass a:hover { color: #fff !important; }

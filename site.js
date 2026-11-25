@@ -452,6 +452,93 @@
     });
   }
 
+
+  // ---------- Aurora background (adapted from "Aurora Background" by pulkitxm, 21st.dev; "ice" palette) ----------
+  function initAurora() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var c = document.createElement('canvas');
+    c.id = 'aurora-bg'; c.setAttribute('aria-hidden', 'true');
+    document.body.insertBefore(c, document.body.firstChild);
+    var ctx = c.getContext('2d'); if (!ctx) return;
+    var SCALE = 0.25; // draw small, CSS scales it up (gradients stay smooth, very cheap)
+    var palette = [
+      ['hsla(200, 85%, 68%, 0.55)', 'hsla(215, 75%, 80%, 0.30)', 'rgba(0,0,0,0)'],
+      ['hsla(185, 75%, 70%, 0.45)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)'],
+      ['hsla(222, 80%, 72%, 0.40)', 'hsla(205, 70%, 85%, 0.20)', 'rgba(0,0,0,0)']
+    ];
+    var blobCount = 5, t = Math.random() * 10, speed = 0.55, last = 0;
+    function resize() { c.width = Math.max(1, Math.round(innerWidth * SCALE)); c.height = Math.max(1, Math.round(innerHeight * SCALE)); }
+    resize(); addEventListener('resize', resize);
+    function draw() {
+      var w = c.width, h = c.height, R = Math.max(w, h);
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < blobCount; i++) {
+        var L = palette[i % palette.length], ph = (i / blobCount) * Math.PI * 2 + t;
+        var x = w / 2 + Math.sin(ph) * (w * .32) + Math.cos(t * .5) * (w * .12);
+        var y = h / 2 + Math.cos(ph * .7) * (h * .3) + Math.sin(t * .3) * (h * .12);
+        var g = ctx.createRadialGradient(x, y, 0, x, y, R * .45);
+        g.addColorStop(0, L[0]); g.addColorStop(.5, L[1]); g.addColorStop(1, L[2]);
+        ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      }
+      ctx.globalCompositeOperation = 'screen';
+      for (var k = 0; k < 2; k++) {
+        var ph2 = (k / 2) * Math.PI + t * .8;
+        var x2 = w / 2 + Math.sin(ph2 * 1.2) * (w * .22), y2 = h / 2 + Math.cos(ph2 * .9) * (h * .22);
+        var g2 = ctx.createRadialGradient(x2, y2, 0, x2, y2, R * .38);
+        g2.addColorStop(0, palette[k][0]); g2.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g2; ctx.fillRect(0, 0, w, h);
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    function loop(now) {
+      if (!document.hidden && now - last > 42) { last = now; t += 0.01 * speed * 2.4; draw(); }
+      requestAnimationFrame(loop);
+    }
+    draw();
+    if (!reduce) requestAnimationFrame(loop);
+  }
+
+  // ---------- Dental network (footer / Contact) ----------
+  function initNetwork() {
+    var host = document.getElementById('contact'); if (!host) return;
+    var c = document.createElement('canvas'); c.className = 'net-canvas'; c.setAttribute('aria-hidden', 'true');
+    host.insertBefore(c, host.firstChild);
+    var ctx = c.getContext('2d'), W, H, dpr = Math.min(2, window.devicePixelRatio || 1);
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var path = [[-.38,-.48],[-.55,-.42],[-.6,-.2],[-.55,.02],[-.48,.2],[-.44,.45],[-.34,.66],[-.22,.62],[-.16,.4],[-.08,.24],[0,.22],[.08,.24],[.16,.4],[.22,.62],[.34,.66],[.44,.45],[.48,.2],[.55,.02],[.6,-.2],[.55,-.42],[.38,-.48],[.2,-.44],[0,-.4],[-.2,-.44]];
+    var targets = [];
+    for (var i = 0; i < path.length; i++) { var a = path[i], b = path[(i + 1) % path.length]; for (var s = 0; s < 1; s += .34) targets.push([a[0] + (b[0] - a[0]) * s, a[1] + (b[1] - a[1]) * s]); }
+    var pts = [];
+    function size() { W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    size(); addEventListener('resize', size);
+    for (var k = 0; k < targets.length + 34; k++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, t: k < targets.length ? targets[k] : null });
+    var visible = false, start = performance.now();
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(host); else visible = true;
+    function frame(now) {
+      if (visible && !document.hidden) {
+        var phase = (Math.sin((now - start) / 4500) + 1) / 2;
+        var rtl = root.dir === 'rtl', small = W < 768;
+        var cx = small ? W * .5 : (rtl ? W * .84 : W * .16), cy = small ? H * .2 : H * .62, sc = Math.min(W, H) * (small ? .3 : .42);
+        ctx.clearRect(0, 0, W, H);
+        pts.forEach(function (p) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1;
+          if (p.t) { var tx = cx + p.t[0] * sc, ty = cy + p.t[1] * sc; p.x += (tx - p.x) * .03 * phase; p.y += (ty - p.y) * .03 * phase; }
+        });
+        for (var i = 0; i < pts.length; i++) for (var j = i + 1; j < pts.length; j++) {
+          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 85) { ctx.strokeStyle = 'rgba(125,211,252,' + (.32 * (1 - d / 85)) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke(); }
+        }
+        pts.forEach(function (p) {
+          var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 5); g.addColorStop(0, 'rgba(186,230,253,.9)'); g.addColorStop(1, 'rgba(56,189,248,0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, 6.283); ctx.fill();
+        });
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   // ---------- Start ----------
   document.querySelectorAll('img').forEach(fallback);
   var saved = 'ar';
@@ -465,6 +552,8 @@
   initMenu();
   initCards();
   initMobileCta();
+  initAurora();
+  initNetwork();
   serviceCovers();
 
   // Background video: pause when scrolled out of view (saves battery and data)
