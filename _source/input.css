@@ -580,7 +580,7 @@ footer.footer-glass .text-xs, footer.footer-glass small { color: rgba(255,255,25
   #mobile-menu {
     top: calc(100% + 10px); padding: 14px 22px 18px !important;
     background: linear-gradient(160deg, rgba(255,255,255,.86), rgba(240,246,255,.78)) !important;
-    -webkit-backdrop-filter: blur(48px) saturate(200%); backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(220%); backdrop-filter: blur(60px) saturate(220%);
     border: 1px solid rgba(255,255,255,.85);
     box-shadow: 0 1px 1px rgba(255,255,255,.8) inset, 0 28px 60px -20px rgba(15,30,70,.55) !important;
     max-height: calc(100dvh - 110px); overflow-y: auto; overscroll-behavior: contain;
@@ -589,12 +589,13 @@ footer.footer-glass .text-xs, footer.footer-glass small { color: rgba(255,255,25
   }
   body::after {
     content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
-    background: rgba(10,25,55,.28);
-    -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(10,25,55,.30);
     opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility .28s;
   }
   body.menu-open::after { opacity: 1; visibility: visible; }
   body.menu-open { overflow: hidden; }
+  main, footer, #mobile-cta { transition: filter .3s ease; }
+  body.menu-open main, body.menu-open footer, body.menu-open #mobile-cta { filter: blur(16px) saturate(130%); }
 }
 @keyframes menuIn {
   from { opacity: 0; transform: translateY(-8px) scale(.97); }
