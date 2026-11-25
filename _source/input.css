@@ -562,3 +562,42 @@ footer.footer-glass .text-xs, footer.footer-glass small { color: rgba(255,255,25
   50%      { box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset, 0 1px 0 rgba(255,255,255,.35) inset, 0 0 34px rgba(74,222,128,.65), 0 10px 26px -10px rgba(0,0,0,.45); }
 }
 @media (prefers-reduced-motion: reduce) { .open-badge { animation: none; } }
+
+/* ---------- Mobile menu: real frosted glass (phones & tablets only) ----------
+   A blurred element inside another blurred element can't see the page behind it,
+   so on mobile the bar's blur moves to a ::before layer and the open menu gets
+   its own strong blur, plus a soft blurred veil over the page. */
+@media (max-width: 1023px) {
+  nav.site-header {
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+    background: transparent;
+  }
+  nav.site-header::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    background: rgba(255,255,255,.55);
+    -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%);
+  }
+  #mobile-menu {
+    top: calc(100% + 10px); padding: 14px 22px 18px !important;
+    background: linear-gradient(160deg, rgba(255,255,255,.86), rgba(240,246,255,.78)) !important;
+    -webkit-backdrop-filter: blur(48px) saturate(200%); backdrop-filter: blur(48px) saturate(200%);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow: 0 1px 1px rgba(255,255,255,.8) inset, 0 28px 60px -20px rgba(15,30,70,.55) !important;
+    max-height: calc(100dvh - 110px); overflow-y: auto; overscroll-behavior: contain;
+    transform-origin: top center;
+    animation: menuIn .28s cubic-bezier(.2,.8,.2,1);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none;
+    background: rgba(10,25,55,.28);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
+    opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility .28s;
+  }
+  body.menu-open::after { opacity: 1; visibility: visible; }
+  body.menu-open { overflow: hidden; }
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-8px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { #mobile-menu { animation: none; } }

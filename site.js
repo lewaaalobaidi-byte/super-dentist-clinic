@@ -70,6 +70,7 @@
     function set(open) {
       menu.classList.toggle('hidden', !open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('menu-open', open);
     }
     btn.addEventListener('click', function (e) { e.stopPropagation(); set(menu.classList.contains('hidden')); });
     menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
