@@ -462,9 +462,9 @@
     var ctx = c.getContext('2d'); if (!ctx) return;
     var SCALE = 0.25; // draw small, CSS scales it up (gradients stay smooth, very cheap)
     var palette = [
-      ['hsla(200, 85%, 68%, 0.55)', 'hsla(215, 75%, 80%, 0.30)', 'rgba(0,0,0,0)'],
-      ['hsla(185, 75%, 70%, 0.45)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)'],
-      ['hsla(222, 80%, 72%, 0.40)', 'hsla(205, 70%, 85%, 0.20)', 'rgba(0,0,0,0)']
+      ['hsla(38, 75%, 82%, 0.55)', 'hsla(32, 60%, 72%, 0.30)', 'rgba(0,0,0,0)'],
+      ['hsla(28, 55%, 66%, 0.40)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)'],
+      ['hsla(44, 80%, 88%, 0.45)', 'hsla(35, 55%, 78%, 0.22)', 'rgba(0,0,0,0)']
     ];
     var blobCount = 5, t = Math.random() * 10, speed = 0.55, last = 0;
     function resize() { c.width = Math.max(1, Math.round(innerWidth * SCALE)); c.height = Math.max(1, Math.round(innerHeight * SCALE)); }
@@ -513,8 +513,8 @@
     var g = sp.getContext('2d'), r = S / 2 - 2;
     var body = g.createRadialGradient(S / 2, S / 2, r * .55, S / 2, S / 2, r);
     body.addColorStop(0, 'rgba(255,255,255,0.02)');
-    body.addColorStop(.78, 'rgba(186,220,255,0.16)');
-    body.addColorStop(.93, 'rgba(150,200,255,0.42)');
+    body.addColorStop(.78, 'rgba(255,240,215,0.16)');
+    body.addColorStop(.93, 'rgba(255,236,205,0.45)');
     body.addColorStop(1, 'rgba(255,255,255,0.75)');
     g.fillStyle = body; g.beginPath(); g.arc(S / 2, S / 2, r, 0, Math.PI * 2); g.fill();
     // faint iridescent rim
