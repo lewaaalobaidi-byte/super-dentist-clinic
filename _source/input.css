@@ -477,3 +477,20 @@ footer.footer-glass .text-\[\#0062D6\] { color: #7DD3FC !important; }
 footer.footer-glass .text-\[\#15803D\] { color: #4ADE80 !important; }
 footer.footer-glass .border-slate-900\/10 { border-color: rgba(255,255,255,.12) !important; }
 footer.footer-glass a:hover { color: #fff !important; }
+
+/* Teasers + Reviews: no own background, the aurora shows through */
+#teasers, #reviews { background: transparent !important; }
+#reviews::before, #reviews::after { display: none !important; }
+#teasers h2, #reviews h2 { color: #1A365D !important; }
+#teasers h2 .text-deepBlue, #reviews h2 .text-deepBlue { color: #1d6fd6 !important; }
+#teasers p { color: #475569 !important; }
+#teasers .text-deepBlue, #teasers span.font-bold, #teasers i { color: #0062D6 !important; }
+#teasers .glass-panel, #teasers .crystal, #reviews .crystal, #reviews .card {
+  background: linear-gradient(150deg, rgba(255,255,255,.58) 0%, rgba(255,255,255,.34) 55%, rgba(255,255,255,.26) 100%) !important;
+  border-color: rgba(255,255,255,.65) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+#teasers .glass-panel:hover { background: linear-gradient(150deg, rgba(255,255,255,.66), rgba(255,255,255,.4)) !important; }
+#teasers .crystal > .cg-lens, #reviews .crystal > .cg-lens {
+  background: radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.55), transparent 55%), linear-gradient(to bottom, rgba(255,255,255,.18), transparent 35%);
+}
