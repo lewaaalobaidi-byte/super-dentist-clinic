@@ -530,3 +530,10 @@ main > section:not(#specialists):not(#home) h2:not(:is(.card, .crystal, .glass-p
 
 /* Glass panels outside the hero: same whiter glass as the cards so text stays readable on navy */
 main > section:not(#home) .crystal:not(.crystal-dark) { background: linear-gradient(150deg, rgba(255,255,255,.86), rgba(255,255,255,.70)) !important; }
+
+/* Footer / Contact: same navy as the page texture (texture shows through), dental network on top */
+footer.footer-glass {
+  background: linear-gradient(180deg, rgba(8,30,50,.35), rgba(4,16,28,.55)) !important;
+  border: 1px solid rgba(125,211,252,.16) !important;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset, 0 24px 50px -24px rgba(0,0,0,.6) !important;
+}
