@@ -152,7 +152,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Pre-built Tailwind CSS. If you add new Tailwind classes, styles.css must be rebuilt. -->
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=28">
 {head_extra}
 </head>
 <body class="pb-[76px] md:pb-0 antialiased relative selection:bg-navyBlue selection:text-white font-sans {body_cls}">
@@ -164,7 +164,7 @@ def page(filename, titles, desc, body, active="", video=False, head_extra="", sc
 {FOOTER}
 {MOBILE_CTA}
 {scripts}
-<script src="site.js?v=27"></script>
+<script src="site.js?v=28"></script>
 <!-- AI Assistant Chat Widget -->
 <script src="https://app.aiassist.chat/widget.js" data-site-id="82ca7860-756f-42e5-a851-264dc3e4ab57" data-api-url="https://engine.aiassist.chat" async></script>
 </body>
@@ -471,6 +471,10 @@ def build_doctors():
         gal = (f'<a href="gallery.html#{d["gallery"]}" class="inline-flex items-center gap-2 px-6 py-3 font-bold text-slate-900 bg-white rounded-[14px] border-[1.5px] border-slate-300 hover:border-navyBlue transition-colors"><i class="fa-solid fa-images" aria-hidden="true"></i>{t("شاهد الحالات", "See cases", "حاڵەتەکان ببینە")}</a>'
                if d["gallery"] else "")
         n = d["name"]
+        bio_html = ""
+        if d.get("bio"):
+            facts = "".join(f'<li class="flex items-start gap-3"><i class="fa-solid {ic} text-deepBlue mt-1 w-5 text-center" aria-hidden="true"></i><span>{tt(tx)}</span></li>' for ic, tx in d.get("facts", []))
+            bio_html = f'<p class="text-slate-700 leading-relaxed max-w-[62ch]">{tt(d["bio"])}</p>' + (f'<ul class="space-y-2 text-slate-700 font-medium">{facts}</ul>' if facts else "")
         cards += f'''
 <article id="{d["id"]}" class="card rounded-[2rem] overflow-hidden grid md:grid-cols-[320px_1fr]">
   <img src="{d["photo"]}" alt="{n["en"]}" loading="lazy" class="w-full h-80 md:h-full object-cover object-top">
@@ -491,6 +495,7 @@ def build_doctors():
       <li><i class="fa-solid fa-language text-deepBlue w-6" aria-hidden="true"></i> Arabic, Kurdish, English ...</li>
     </ul>
     -->
+    {bio_html}
     {f'<div class="flex flex-wrap gap-2">{links}</div>' if links else ''}
     <div class="flex flex-wrap gap-3 pt-2">
       {wa_btn("مرحباً، أود حجز موعد مع " + n["ar"], "Hello, I'd like to book an appointment with " + n["en"], "سڵاو، دەمەوێت نۆرەیەک بگرم لای " + n["ku"],

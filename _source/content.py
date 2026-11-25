@@ -222,6 +222,19 @@ DOCTORS = [
         "role": {"ar": "أخصائي تقويم الأسنان", "en": "Orthodontist", "ku": "پسپۆڕی ڕاستکردنەوەی ددان"},
         "services": ["orthodontics"],
         "gallery": "orthodontics",
+        "bio": {
+            "ar": "أخصائي تقويم الأسنان وأستاذ جامعي. حاصل على الدكتوراه في تقويم الأسنان من الولايات المتحدة الأمريكية، ودرّس وأشرف على طلبة الدراسات العليا في تقويم الأسنان في كليات طب الأسنان العراقية.",
+            "en": "Specialist orthodontist and university professor. He holds a PhD in orthodontics from the United States, and has taught and supervised postgraduate orthodontics students at Iraqi colleges of dentistry.",
+            "ku": "پسپۆڕی ڕاستکردنەوەی ددان و مامۆستای زانکۆ. بڕوانامەی دکتۆرای لە ڕاستکردنەوەی ددان لە ئەمریکا وەرگرتووە، و وانەی وتووەتەوە و سەرپەرشتی خوێندکارانی خوێندنی باڵای ڕاستکردنەوەی ددانی کردووە لە کۆلێژەکانی ددانسازی لە عێراق.",
+        },
+        "facts": [
+            ("fa-graduation-cap", {"ar": "بكالوريوس طب وجراحة الفم والأسنان · ماجستير تقويم الأسنان · دكتوراه تقويم الأسنان (الولايات المتحدة)",
+                                   "en": "BDS · MSc in Orthodontics · PhD in Orthodontics (USA)",
+                                   "ku": "بەکالۆریۆسی ددانسازی · ماستەر لە ڕاستکردنەوەی ددان · دکتۆرا لە ڕاستکردنەوەی ددان (ئەمریکا)"}),
+            ("fa-chalkboard-user", {"ar": "أستاذ تقويم الأسنان ومشرف على الدراسات العليا",
+                                    "en": "Professor of orthodontics and postgraduate supervisor",
+                                    "ku": "پرۆفیسۆری ڕاستکردنەوەی ددان و سەرپەرشتیاری خوێندنی باڵا"}),
+        ],
     },
     {
         "id": "mohamed",
